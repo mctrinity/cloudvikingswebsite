@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Members - Cloud Vikings Clan{% endblock %}
+
+{% block content %}
+<h2>Clan Members</h2>
+
+<div id="membersCarousel" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+        {% for member in members %}
+            {% if loop.index0 % 3 == 0 %}
+            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                <div class="row">
+            {% endif %}
+
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <strong>{{ member['name'] }}</strong> ({{ member['role'] }}) <br>
+                        Town Hall Level: {{ member['townHallLevel'] }} <br>
+                        Trophies: {{ member['trophies'] }} <br>
+                        <div class="details">
+                            <div class="donations">Donations: {{ member['donations'] }}</div>
+                            <div class="received">Received: {{ member['donationsReceived'] }}</div>
+                            <div class="exp-level">Exp Level: {{ member['expLevel'] }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% if loop.index0 % 3 == 2 or loop.last %}
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <!-- Carousel Controls: Moved outside the carousel content -->
+    <a class="carousel-control-prev" href="#membersCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#membersCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+{% endblock %}
