@@ -12,9 +12,6 @@ load_dotenv(dotenv_path='.env')
 API_KEY = os.getenv('API_KEY')
 CLAN_TAG = os.getenv('CLAN_TAG')
 
-print("API Key:", API_KEY)
-print("Clan Tag:", CLAN_TAG)
-
 
 # Function to get clan data from the Clash of Clans API
 def get_clan_data():
