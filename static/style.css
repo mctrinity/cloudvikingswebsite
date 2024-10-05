@@ -23,7 +23,7 @@ h1 {
 h2 {
     color: #ff5c33;
     text-align: center;
-    margin-bottom: 30px;  /* Added margin below the "Clan Members" heading */
+    margin-bottom: 60px;  /* Added margin below the "Clan Members" heading */
 }
 
 header {
@@ -52,7 +52,7 @@ main {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    padding-bottom: 60px;
+    padding-bottom: 30px;
 }
 
 /* Bootstrap carousel card styling for clan members */
