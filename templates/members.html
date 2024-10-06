@@ -2,24 +2,28 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2 class="mb-4">Clan Members</h2>
+    <h2 class="mb-4 text-center">Clan Members</h2> <!-- Center the h2 title -->
 
     {% if members %}
         <div class="row">
             {% for member in members %}
-                <div class="col-md-4 custom-card-spacing"> <!-- Added custom-card-spacing here -->
+                <div class="col-md-4 custom-card-spacing">
                     <div class="card custom-card-shadow">
-                        <div class="card-body d-flex align-items-center">
-                            <!-- Avatar image using RoboHash (based on member's name) -->
-                            <img src="https://robohash.org/{{ member['name'] }}.png?size=50x50" alt="Dashatar" class="me-3 rounded-circle">
-                            <div>
-                                <h5 class="card-title custom-member-name">{{ member['name'] }}</h5>
-                                <p class="card-text">
-                                    <strong>Trophies:</strong> {{ member['trophies'] }}<br>
-                                    <strong>Role:</strong> {{ member['role'].capitalize() }}<br>
-                                    <strong>Donations:</strong> {{ member['donations'] }}<br>
-                                    <strong>Received:</strong> {{ member['donationsReceived'] }}<br>
-                                </p>
+                        <div class="card-body text-center"> <!-- Center the content within the card -->
+                            <!-- Avatar and Details Wrapper -->
+                            <div class="member-details">
+                                <!-- Avatar image using RoboHash (based on member's name) -->
+                                <img src="https://robohash.org/{{ member['name'] }}.png?size=50x50" alt="Dashatar" class="rounded-circle">
+                                <!-- Member details -->
+                                <div class="mt-3"> <!-- Add margin above the text -->
+                                    <h5 class="card-title custom-member-name">{{ member['name'] }}</h5>
+                                    <p class="card-text">
+                                        <strong>Trophies:</strong> {{ member['trophies'] }}<br>
+                                        <strong>Role:</strong> {{ member['role'].capitalize() }}<br>
+                                        <strong>Donations:</strong> {{ member['donations'] }}<br>
+                                        <strong>Received:</strong> {{ member['donationsReceived'] }}<br>
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>
