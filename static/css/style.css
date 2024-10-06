@@ -1,0 +1,97 @@
+/* Custom padding for the navbar */
+.navbar {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+.custom-navbar-brand {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+.custom-member-name {
+    color: #ff6347; /* Custom color for member names */
+}
+
+/* Shadow and animation for the cards */
+.custom-card-shadow {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    opacity: 1;
+    transform: translateY(0);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 40px; /* More vertical space below each card */
+    width: 85%; /* Reduce the card width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.custom-card-spacing {
+    padding-left: 25px; /* More horizontal space between cards */
+    padding-right: 25px;
+}
+
+
+/* Grow effect on hover */
+.custom-card-shadow:hover {
+    transform: scale(1.15); /* Grow the card slightly on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+}
+
+/* Keyframe animation for card appearance */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0); /* End in normal position */
+    }
+}
+
+/* Footer styles */
+footer {
+    background-color: #343a40;
+    padding: 20px 0;
+}
+
+footer h5 {
+    font-size: 1.25rem;
+}
+
+footer a {
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+footer a:hover {
+    color: #f1c40f; /* Customize hover color */
+}
+
+/* Grouping the icons */
+.social-icons-group {
+    display: inline-flex; /* Align the icons in a horizontal row */
+    gap: 10px; /* Add space between the icons */
+    padding-top: 5px; /* Adjust alignment with "Follow Us" */
+}
+
+.social-icons-group i {
+    font-size: 20px;  /* Uniform size for all icons */
+    vertical-align: middle; /* Align icons vertically */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.social-icons-group a {
+    display: inline-block;
+    line-height: 1; /* Ensure consistent vertical centering */
+}
+
+/* Hover effect for the icons */
+.social-icons-group a:hover i {
+    transform: scale(1.1); /* Slightly increase the size (10%) on hover */
+    color: #f1c40f; /* Change color on hover (adjust color as needed) */
+}
+
+
+
+
