@@ -23,28 +23,29 @@
     opacity: 1;
     transform: translateY(0);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 40px; /* More vertical space below each card */
-    width: 85%; /* Reduce the card width */
+    margin-bottom: 40px;
+    width: 100%; /* Increase width to full for desktop */
+    max-width: 400px; /* Set a maximum width to prevent it from becoming too large */
     margin-left: auto;
     margin-right: auto;
 }
 
 .custom-card-spacing {
-    padding-left: 25px; /* More horizontal space between cards */
+    padding-left: 25px;
     padding-right: 25px;
 }
 
 /* Grow effect on hover */
 .custom-card-shadow:hover {
-    transform: scale(1.15); /* Grow the card slightly on hover */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Increase shadow on hover */
+    transform: scale(1.15);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* Keyframe animation for card appearance */
 @keyframes fadeInUp {
     to {
         opacity: 1;
-        transform: translateY(0); /* End in normal position */
+        transform: translateY(0);
     }
 }
 
@@ -64,31 +65,31 @@ footer a {
 }
 
 footer a:hover {
-    color: #f1c40f; /* Customize hover color */
+    color: #f1c40f;
 }
 
 /* Grouping the icons */
 .social-icons-group {
-    display: inline-flex; /* Align the icons in a horizontal row */
-    gap: 10px; /* Add space between the icons */
-    padding-top: 5px; /* Adjust alignment with "Follow Us" */
+    display: inline-flex;
+    gap: 10px;
+    padding-top: 5px;
 }
 
 .social-icons-group i {
-    font-size: 20px;  /* Uniform size for all icons */
-    vertical-align: middle; /* Align icons vertically */
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effect */
+    font-size: 20px;
+    vertical-align: middle;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .social-icons-group a {
     display: inline-block;
-    line-height: 1; /* Ensure consistent vertical centering */
+    line-height: 1;
 }
 
 /* Hover effect for the icons */
 .social-icons-group a:hover i {
-    transform: scale(1.1); /* Slightly increase the size (10%) on hover */
-    color: #f1c40f; /* Change color on hover (adjust color as needed) */
+    transform: scale(1.1);
+    color: #f1c40f;
 }
 
 /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
@@ -96,43 +97,53 @@ footer a:hover {
 /* Adjustments for tablets (iPads, etc.) */
 @media (max-width: 768px) {
     .container {
-        padding-bottom: 80px; /* Ensure enough space between content and footer */
+        padding-bottom: 80px;
     }
 
     .navbar {
-        padding-top: 1rem; /* Adjust navbar padding */
+        padding-top: 1rem;
         padding-bottom: 1rem;
     }
 
     h1, h2, h3, p {
-        font-size: 90%; /* Reduce text size slightly */
+        font-size: 90%; /* Adjust all headings slightly for tablets */
+    }
+
+    h2 {
+        font-size: 1.75rem; /* Slightly increase h2 size for tablets */
     }
 
     .custom-card-shadow {
-        width: 90%; /* Slightly increase card width for smaller screens */
+        width: 95%;
+        max-width: none;
     }
 }
 
 /* Adjustments for phones (smaller than 576px) */
 @media (max-width: 576px) {
     .container {
-        padding-bottom: 100px; /* Ensure enough space between content and footer */
+        padding-bottom: 100px;
     }
 
     .navbar {
-        padding-top: 0.8rem; /* Further adjust navbar padding */
+        padding-top: 0.8rem;
         padding-bottom: 0.8rem;
     }
 
-    h1, h2, h3, p {
-        font-size: 85%; /* Further reduce text size */
+    h1, h3, p {
+        font-size: 85%; /* Keep other headings slightly reduced for phones */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Increase h2 size on phones */
+        font-weight: bold; /* Ensure it stands out more */
     }
 
     .custom-card-shadow {
-        width: 95%; /* Make cards wider for smaller screens */
+        width: 100%;
+        max-width: none;
     }
 
-    /* Ensure images are responsive */
     img {
         max-width: 100%;
         height: auto;
