@@ -49,6 +49,7 @@ def home():
     clan_points = clan_data.get('clanPoints', 'N/A')
     cwl_rank = clan_data.get('warLeague', {}).get('name', 'N/A')
     capital_hall_level = clan_data.get('clanCapital', {}).get('capitalHallLevel', 'N/A')
+    member_count = len(clan_data.get('memberList', []))  # Get the count of members in the list
 
     return render_template(
         'index.html',
@@ -57,9 +58,11 @@ def home():
         clan_points=clan_points,
         cwl_rank=cwl_rank,
         capital_hall_level=capital_hall_level,
+        member_count=member_count,
         current_year=current_year,
         page="home"
     )
+
 
 
 # Route to display members of the clan
