@@ -42,16 +42,24 @@ def get_clan_data():
 def home():
     current_year = datetime.now().year  # Get current year
     clan_data = get_clan_data()
-    if 'name' in clan_data:
-        clan_name = clan_data['name']
-        clan_level = clan_data['clanLevel']
-        clan_points = clan_data['clanPoints']
-    else:
-        clan_name = "Unknown Clan"
-        clan_level = "N/A"
-        clan_points = "N/A"
 
-    return render_template('index.html', clan_name=clan_name, clan_level=clan_level, clan_points=clan_points, current_year=current_year, page="home")
+    # Initialize default values in case data is not present
+    clan_name = clan_data.get('name', 'Unknown Clan')
+    clan_level = clan_data.get('clanLevel', 'N/A')
+    clan_points = clan_data.get('clanPoints', 'N/A')
+    cwl_rank = clan_data.get('warLeague', {}).get('name', 'N/A')
+    capital_hall_level = clan_data.get('clanCapital', {}).get('capitalHallLevel', 'N/A')
+
+    return render_template(
+        'index.html',
+        clan_name=clan_name,
+        clan_level=clan_level,
+        clan_points=clan_points,
+        cwl_rank=cwl_rank,
+        capital_hall_level=capital_hall_level,
+        current_year=current_year,
+        page="home"
+    )
 
 
 # Route to display members of the clan
