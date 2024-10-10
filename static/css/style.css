@@ -162,6 +162,17 @@ footer a:hover {
     color: #f1c40f;
 }
 
+.disclaimer-text {
+    font-size: 0.875rem; /* Smaller font size for the disclaimer, adjust as needed */
+    line-height: 1.5; /* Increase line spacing for better readability */
+}
+
+.disclaimer-text a {
+    font-size: inherit; /* Ensure the link matches the size of the surrounding text */
+    color: #f1c40f; /* Adjust color if desired for better visibility */
+}
+
+
 /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
 
 /* Adjustments for tablets (iPads, etc.) */
