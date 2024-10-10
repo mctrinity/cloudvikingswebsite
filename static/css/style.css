@@ -4,14 +4,15 @@
 }
 
 .hero-slider {
-    position: relative;
-    width: 100%;
-    max-width: 50%;
-    height: 400px;
-    overflow: hidden; /* Hide parts of images outside the container */
-    border-radius: 10px; /* Optional: keeps rounded corners for the images */
+    flex: 1; /* Allows the hero slider to take up equal space */
+    max-width: 50%; /* Ensures it doesn't grow too large */
+    height: 400px; /* Adjust as needed */
+    overflow: hidden; /* Hide overflowing parts of the image */
+    border-radius: 10px; /* Optional: rounded corners */
     margin-top: 20px;
     margin-bottom: 20px;
+    margin-right: 20px; /* Space between the hero slider and the text */
+    position: relative; /* Required for positioning the images within the slider */
 }
 
 .hero-img {
@@ -20,44 +21,57 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the images cover the slider area */
     opacity: 0; /* Hidden by default */
     transition: opacity 1s ease-in-out; /* Smooth fade transition */
+    border-radius: 10px; /* Ensures images have rounded corners */
 }
 
 .hero-img.active {
-    opacity: 1; /* Show the active image */
+    opacity: 1; /* Shows the active image */
+}
+
+.clan-details {
+    flex: 1; /* Allows the details to take up equal space */
+    max-width: 50%; /* Ensures the details don’t grow too large */
+    padding: 20px; /* Adds some padding for better spacing */
+}
+
+.clan-details .btn {
+    margin-top: 20px; /* Adds space above the button */
+    padding: 10px 20px; /* Adjusts button padding for better touch targets */
+    font-size: 1rem; /* Ensures the text size is readable */
+    border-radius: 5px; /* Optional: Rounds the corners of the button */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover effects */
+}
+
+.clan-details .btn:hover {
+    background-color: #0056b3; /* Change to a slightly darker shade on hover */
+    transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
 
 
 @media (max-width: 768px) {
-    .hero {
-        height: 60vh; /* Increase the height of the hero image on smaller screens */
-        max-width: 100%; /* Make the image span the full width */
-        margin-top: 20px; /* Maintain equal top margin */
-        margin-bottom: 20px; /* Maintain equal bottom margin */
-        margin-right: 0; /* Remove right margin on smaller screens */
+    .d-flex {
+        flex-direction: column; /* Stack vertically on smaller screens */
+    }
+
+    .hero-slider {
+        max-width: 100%; /* Make the hero slider take full width */
+        height: 60vh; /* Adjust height for smaller screens */
+        margin-right: 0; /* Remove right margin */
     }
 
     .clan-details {
         max-width: 100%; /* Make the text section span the full width */
-        margin-top: 20px; /* Add some space above the text section */
+        margin-top: 20px; /* Add space above the text section */
     }
 
-    .clan-details h1 {
-        font-size: 2.5rem; /* Increase the size of the heading */
-    }
-
-    .clan-details p {
-        font-size: 1.2rem; /* Increase the size of paragraph text */
-    }
-
-    .btn {
-        font-size: 1rem; /* Adjust button text size for better touch targets */
-        padding: 10px 20px; /* Increase button padding for better tap area */
+    .clan-details .btn {
+        font-size: 0.9rem; /* Slightly smaller font size for smaller screens */
+        padding: 8px 16px; /* Adjust padding for a more compact look */
     }
 }
-
 
 
 /* Custom padding for the navbar */
