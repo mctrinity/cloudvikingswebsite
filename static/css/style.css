@@ -3,22 +3,32 @@
     gap: 40px; /* Adjust the spacing between image and details */
 }
 
-.hero {
-    flex: 1;
+.hero-slider {
+    position: relative;
+    width: 100%;
     max-width: 50%;
     height: 400px;
+    overflow: hidden; /* Hide parts of images outside the container */
+    border-radius: 10px; /* Optional: keeps rounded corners for the images */
     margin-top: 20px;
     margin-bottom: 20px;
-    margin-right: 20px;
 }
 
-
 .hero-img {
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 10px; /* Optional: Rounded corners */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1s ease-in-out; /* Smooth fade transition */
 }
+
+.hero-img.active {
+    opacity: 1; /* Show the active image */
+}
+
 
 @media (max-width: 768px) {
     .hero {

@@ -4,12 +4,32 @@
 <div class="container mt-4">
     <!-- Flexbox container for side-by-side layout -->
     <div class="d-flex flex-wrap align-items-center">
-        <!-- Hero image on the left with floating effect -->
-        <div class="hero">
+        <!-- Hero slider on the left -->
+        <div class="hero-slider">
             <img 
-                src="{{ url_for('static', filename='images/cv_hero.png') }}" 
-                alt="War Arena Banner" 
-                class="hero-img floating-clouds">
+                src="{{ url_for('static', filename='images/cv1.png') }}" 
+                alt="Hero Image 1" 
+                class="hero-img active">
+            <img 
+                src="{{ url_for('static', filename='images/cv2.png') }}" 
+                alt="Hero Image 2" 
+                class="hero-img">
+            <img 
+                src="{{ url_for('static', filename='images/cv3.png') }}" 
+                alt="Hero Image 3" 
+                class="hero-img">
+            <img 
+                src="{{ url_for('static', filename='images/cv4.png') }}" 
+                alt="Hero Image 3" 
+                class="hero-img">
+            <img 
+                src="{{ url_for('static', filename='images/cv5.png') }}" 
+                alt="Hero Image 3" 
+                class="hero-img">
+            <img 
+                src="{{ url_for('static', filename='images/cv6.png') }}" 
+                alt="Hero Image 3" 
+                class="hero-img">
         </div>
         
         <!-- Clan details on the right -->
