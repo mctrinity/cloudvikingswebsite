@@ -69,6 +69,15 @@
     color: #ff6347; /* Custom color for member names */
 }
 
+/* Main content area */
+.main-content {
+    background-color: #f8f9fa; /* Light gray background color */
+    border-radius: 10px; /* Optional: Adds rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
+    padding: 20px; /* Padding inside the container */
+    margin-top: 20px; /* Space above the content */
+    margin-bottom: 20px; /* Space below the content */
+}
 
 /* Shadow and animation for the cards */
 .custom-card-shadow {
