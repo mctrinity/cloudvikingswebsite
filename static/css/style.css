@@ -172,6 +172,23 @@ footer a:hover {
     color: #f1c40f; /* Adjust color if desired for better visibility */
 }
 
+.floating-clouds {
+    animation: floatClouds 10s ease-in-out infinite; /* Adjust duration and easing */
+    position: relative; /* Ensure the element can move */
+}
+
+@keyframes floatClouds {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px); /* Moves up slightly */
+    }
+    100% {
+        transform: translateY(0); /* Returns to original position */
+    }
+}
+
 
 /* ---------- RESPONSIVE ADJUSTMENTS ---------- */
 
