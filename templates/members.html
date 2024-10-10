@@ -24,6 +24,11 @@
                                         <strong>Donations:</strong> {{ member['donations'] }}<br>
                                         <strong>Received:</strong> {{ member['donationsReceived'] }}<br>
                                     </p>
+                                    <!-- Link to CoC Profile -->
+                                    <a href="https://link.clashofclans.com/en?action=OpenPlayerProfile&tag={{ member['tag'] | replace('#', '%23') }}" 
+                                       class="btn btn-outline-primary mt-2" target="_blank">
+                                       View Profile
+                                    </a>
                                 </div>
                             </div>
                         </div>
