@@ -1,3 +1,55 @@
+.d-flex {
+    display: flex;
+    gap: 40px; /* Adjust the spacing between image and details */
+}
+
+.hero {
+    flex: 1;
+    max-width: 50%;
+    height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+}
+
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px; /* Optional: Rounded corners */
+}
+
+@media (max-width: 768px) {
+    .hero {
+        height: 60vh; /* Increase the height of the hero image on smaller screens */
+        max-width: 100%; /* Make the image span the full width */
+        margin-top: 20px; /* Maintain equal top margin */
+        margin-bottom: 20px; /* Maintain equal bottom margin */
+        margin-right: 0; /* Remove right margin on smaller screens */
+    }
+
+    .clan-details {
+        max-width: 100%; /* Make the text section span the full width */
+        margin-top: 20px; /* Add some space above the text section */
+    }
+
+    .clan-details h1 {
+        font-size: 2.5rem; /* Increase the size of the heading */
+    }
+
+    .clan-details p {
+        font-size: 1.2rem; /* Increase the size of paragraph text */
+    }
+
+    .btn {
+        font-size: 1rem; /* Adjust button text size for better touch targets */
+        padding: 10px 20px; /* Increase button padding for better tap area */
+    }
+}
+
+
+
 /* Custom padding for the navbar */
 .navbar {
     padding-top: 1.5rem;
@@ -16,6 +68,7 @@
 .custom-member-name {
     color: #ff6347; /* Custom color for member names */
 }
+
 
 /* Shadow and animation for the cards */
 .custom-card-shadow {

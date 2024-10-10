@@ -2,13 +2,26 @@
 
 {% block content %}
 <div class="container mt-4">
-    <h2>Welcome to {{ clan_name }}</h2>
-    <p>Clan Level: <strong>{{ clan_level }}</strong></p>
-    <p>Clan Points: <strong>{{ clan_points }}</strong></p>
-    <p>CWL Rank: <strong>{{ cwl_rank }}</strong></p>
-    <p>Clan Raid Base Level: <strong>{{ capital_hall_level }}</strong></p>
-    <p>Total Members: <strong>{{ member_count }}</strong></p>
-    <a href="/members" class="btn btn-primary">View Clan Members</a>
+    <!-- Flexbox container for side-by-side layout -->
+    <div class="d-flex flex-wrap align-items-center">
+        <!-- Hero image on the left -->
+        <div class="hero">
+            <img 
+                src="{{ url_for('static', filename='images/war_arena_banner.png') }}" 
+                alt="War Arena Banner" 
+                class="hero-img">
+        </div>
+        
+        <!-- Clan details on the right -->
+        <div class="clan-details px-4">
+            <h1>Welcome to {{ clan_name }}</h1>
+            <p>Clan Level: <strong>{{ clan_level }}</strong></p>
+            <p>Clan Points: <strong>{{ clan_points }}</strong></p>
+            <p>CWL Rank: <strong>{{ cwl_rank }}</strong></p>
+            <p>Clan Raid Base Level: <strong>{{ capital_hall_level }}</strong></p>
+            <p>Total Members: <strong>{{ member_count }}</strong></p>
+            <a href="/members" class="btn btn-primary mt-3">View Clan Members</a>
+        </div>
+    </div>
 </div>
 {% endblock %}
-
