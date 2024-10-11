@@ -32,9 +32,18 @@
 }
 
 .clan-details {
-    flex: 1; /* Allows the details to take up equal space */
-    max-width: 50%; /* Ensures the details don’t grow too large */
-    padding: 20px; /* Adds some padding for better spacing */
+    flex: 1; /* Allow the details to take up equal space */
+    max-width: 50%; /* Adjust to ensure the details don't grow too large */
+    padding: 20px; /* Adds space inside the container */
+    text-align: center; /* Center-aligns all text within */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the content vertically */
+    align-items: center; /* Centers the content horizontally */
+}
+
+.clan-details h1 {
+    margin: 0; /* Remove default margin for better control */
 }
 
 .clan-details .btn {
@@ -49,6 +58,7 @@
     background-color: #0056b3; /* Change to a slightly darker shade on hover */
     transform: scale(1.05); /* Slightly enlarges the button on hover */
 }
+
 
 
 @media (max-width: 768px) {

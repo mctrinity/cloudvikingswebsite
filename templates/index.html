@@ -32,9 +32,10 @@
                 class="hero-img">
         </div>
         
-        <!-- Clan details on the right -->
-        <div class="clan-details px-4">
-            <h1>Welcome to {{ clan_name }}</h1>
+        <!-- Clan details centered -->
+        <div class="clan-details px-4 text-center">
+            <h1>Welcome to</h1>
+            <h1>{{ clan_name }}</h1>
             <p>Clan Level: <strong>{{ clan_level }}</strong></p>
             <p>Clan Points: <strong>{{ clan_points }}</strong></p>
             <p>CWL Rank: <strong>{{ cwl_rank }}</strong></p>
@@ -42,6 +43,7 @@
             <p>Total Members: <strong>{{ member_count }}</strong></p>
             <a href="/members" class="btn btn-primary">View Clan Members</a>
         </div>
+
     </div>
 </div>
 {% endblock %}
