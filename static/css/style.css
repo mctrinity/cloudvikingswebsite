@@ -227,6 +227,10 @@
     align-items: center; /* Center both the avatar and the text */
 }
 
+.member-details h2, custom-member-name {
+    color: #ff6347;
+}
+
 .member-details img {
     width: 70px; /* Adjust size of the avatar as needed */
     height: 70px;
