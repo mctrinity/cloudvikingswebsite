@@ -18,20 +18,43 @@
 <body class="d-flex flex-column min-vh-100">  <!-- Ensure body takes full height -->
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark py-3">
-        <a class="navbar-brand custom-navbar-brand" href="/">Cloud Vikings ☁️</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <!-- Left-aligned for large screens, centered for mobile -->
-        <div class="collapse navbar-collapse justify-content-lg-start justify-content-center" id="navbarNav">
-            <ul class="navbar-nav text-lg-start text-center">  <!-- Center text in mobile, left-align on large -->
-                <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="/members">Members</a></li>
-                <!-- <li class="nav-item"><a class="nav-link" href="/wars">Wars</a></li> -->
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <!-- Navbar Brand (Left) -->
+            <a class="navbar-brand" href="/">Cloud Vikings ☁️</a>
+    
+            <!-- Toggler Button (Right-Aligned with ms-auto) -->
+            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+    
+            <!-- Nav Items (Right-Aligned on Desktop/iPad and Centered on Mobile) -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarsExample08">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/members">Members</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Dropdown</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
+    
+    
+    
+    
+    
+    
 
     <!-- Main Content with Background and Flex for Centering -->
     <div class="container-fluid px-4 py-5 d-flex justify-content-center main-content">
@@ -87,20 +110,21 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Hero transition -->
-    <!-- <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.hero-img');
             let currentIndex = 0;
     
             function showNextImage() {
-                images[currentIndex].classList.remove('active'); // Hide the current image
-                currentIndex = (currentIndex + 1) % images.length; // Move to the next image, looping back to 0
-                images[currentIndex].classList.add('active'); // Show the next image
+                images[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % images.length;
+                images[currentIndex].classList.add('active');
             }
     
-            setInterval(showNextImage, 5000); // Change image every 5 seconds (5000 milliseconds)
+            setInterval(showNextImage, 5000); // Change image every 5 seconds
         });
-    </script> -->
+    </script>
+    
     
 </body>
 </html>
