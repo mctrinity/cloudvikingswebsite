@@ -32,7 +32,6 @@
     margin-left: auto;
 }
 
-
 /* Custom navbar item spacing */
 .navbar-nav .nav-item {
     padding-left: 1rem;
@@ -80,6 +79,53 @@
     flex-direction: column;
     justify-content: center; /* Vertically centers the text */
     padding: 20px; /* Adds padding inside the clan details */
+    font-family: 'Roboto', sans-serif; /* New font family */
+    color: #333; /* Adjusted text color */
+    background-color: #f8f9fa; /* Light background color */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Welcome message styling */
+.clan-details h1:first-of-type {
+    font-family: 'Poppins', sans-serif; /* Custom font for greeting */
+    color: #ff6347; /* Custom color for the greeting */
+    font-size: 2.5rem; /* Increase font size */
+    font-weight: bold;
+    text-transform: uppercase; /* Uppercase text */
+    margin-bottom: 10px;
+}
+
+/* Clan name styling */
+.clan-details h1 {
+    color: #2c3e50; /* Custom color for clan name */
+    font-size: 2rem; /* Adjusted font size */
+    margin-bottom: 20px;
+}
+
+/* Styling for paragraph text */
+.clan-details p {
+    color: #555; /* Text color for details */
+    font-size: 1.1rem; /* Adjusted font size */
+    margin-bottom: 8px;
+}
+
+/* Strong text styling in clan details */
+.clan-details strong {
+    color: #2980b9; /* Highlighted color for strong text */
+    font-weight: bold;
+}
+
+/* Styling for the 'View Clan Members' button */
+.clan-details .btn {
+    background-color: #ff6347; /* Custom button color */
+    border: none; /* Remove borders */
+    padding: 10px 20px;
+    font-size: 1.1rem;
+}
+
+.clan-details .btn:hover {
+    background-color: #e74c3c; /* Darker color on hover */
 }
 
 /* Responsive Layout */
@@ -129,7 +175,6 @@
         justify-content: center; /* Center the nav items in the collapsible menu */
         text-align: center; /* Align text of the links in the center */
     }
-
 }
 
 /* Ensure the nav-items are justified to the right on larger screens */
