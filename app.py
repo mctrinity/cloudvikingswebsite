@@ -78,5 +78,10 @@ def members():
     return render_template('members.html', members=members, current_year=current_year, page="members")
 
 
+@app.route('/widgets')
+def widgets():
+    return render_template('widgets.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
