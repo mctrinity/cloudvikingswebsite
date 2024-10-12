@@ -1,1 +1,1 @@
-web: gunicorn app:app
+web: python compile_scss.py && gunicorn app:app

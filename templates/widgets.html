@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">Widgets Page</h2> <!-- Center the h2 title -->
+
+    <div class="row">
+        <!-- Example: Weather Widget -->
+        <!-- Weather Widget (without API key) -->
+        <div class="col-md-4 custom-card-spacing">
+            <div class="card custom-card-shadow">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Weather Widget</h5>
+                    <p class="text-danger">Weather data not available (API key missing).</p> <!-- Placeholder text -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Example: Twitter Feed Widget -->
+        <!-- <div class="col-md-4 custom-card-spacing">
+            <div class="card custom-card-shadow">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Twitter Feed</h5>
+                    <a class="twitter-timeline" data-height="300" href="https://twitter.com/Twitter?ref_src=twsrc%5Etfw">Tweets by Twitter</a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div> -->
+
+        <!-- Example: Custom Widget (Add More Widgets Below) -->
+        <div class="col-md-4 custom-card-spacing">
+            <div class="card custom-card-shadow">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Custom Widget</h5>
+                    <p>Here you can add more custom widgets as needed.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript for Weather Widget -->
+<!-- <script>
+    const apiKey = 'YOUR_API_KEY'; // Replace with your OpenWeatherMap API key
+    const city = 'London'; // Set your preferred city
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            const weatherInfo = `
+                Temperature: ${data.main.temp}°C <br>
+                Weather: ${data.weather[0].description}
+            `;
+            document.getElementById('weather-info').innerHTML = weatherInfo;
+        })
+        .catch(error => console.error('Error fetching weather data:', error));
+</script> -->
+
+{% endblock %}

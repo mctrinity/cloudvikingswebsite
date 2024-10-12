@@ -113,9 +113,18 @@ celerybeat.pid
 .idea/
 
 # PyCharm/IntelliJ project settings
-.idea/
-
-# PyCharm include all user-specific settings and exclude generic project files
 *.iml
 modules.xml
 .idea/
+
+# Node.js dependencies
+node_modules/
+
+# Lock file
+package-lock.json
+
+# npm-debug.log
+npm-debug.log*
+
+# Compiled SCSS
+static/css/*.css
