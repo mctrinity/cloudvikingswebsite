@@ -227,8 +227,18 @@
     align-items: center; /* Center both the avatar and the text */
 }
 
-.member-details h2, custom-member-name {
-    color: #ff6347;
+/* Change the color for the h2 in the clan members section */
+h2 {
+    color: #ff6347; /* Custom color for the heading */
+    font-size: 2.5rem; /* Optional: Adjust the font size */
+    font-weight: bold; /* Optional: Make the text bold */
+}
+
+/* Change the color for clan member names */
+.custom-member-name {
+    color: #2980b9; /* Custom color for the member names */
+    font-size: 1.2rem; /* Optional: Adjust font size for member names */
+    font-weight: 600; /* Optional: Slightly bolder font */
 }
 
 .member-details img {
