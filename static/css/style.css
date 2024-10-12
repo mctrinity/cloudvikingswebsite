@@ -236,7 +236,7 @@ h2 {
 
 /* Change the color for clan member names */
 .custom-member-name {
-    color: #2980b9; /* Custom color for the member names */
+    color: #ff6347; /* Custom color for the member names */
     font-size: 1.2rem; /* Optional: Adjust font size for member names */
     font-weight: 600; /* Optional: Slightly bolder font */
 }
