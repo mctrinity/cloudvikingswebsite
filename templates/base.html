@@ -52,13 +52,7 @@
             </div>
         </div>
     </nav>
-    
-    
-    
-    
-    
-    
-
+   
     <!-- Main Content with Background and Flex for Centering -->
     <div class="container-fluid px-4 py-5 d-flex justify-content-center main-content">
         <div class="w-100" style="max-width: 1200px;">
@@ -117,17 +111,36 @@
         document.addEventListener('DOMContentLoaded', function() {
             const images = document.querySelectorAll('.hero-img');
             let currentIndex = 0;
-    
+            const fadeDuration = 1500; // 1.5 seconds for fade effect
+            const displayDuration = 3000; // Time each image is displayed before fading out
+
             function showNextImage() {
-                images[currentIndex].classList.remove('active');
-                currentIndex = (currentIndex + 1) % images.length;
-                images[currentIndex].classList.add('active');
+                // Fade out the current image
+                images[currentIndex].style.transition = `opacity ${fadeDuration}ms ease-in-out`;
+                images[currentIndex].style.opacity = 0;
+
+                // Wait for the fade-out to complete, then hide the image and show the next one
+                setTimeout(() => {
+                    images[currentIndex].style.visibility = 'hidden'; // Hide after fade-out
+
+                    // Move to the next image
+                    currentIndex = (currentIndex + 1) % images.length;
+
+                    // Show the next image
+                    images[currentIndex].style.visibility = 'visible'; // Make it visible before fading in
+                    images[currentIndex].style.transition = `opacity ${fadeDuration}ms ease-in-out`;
+                    images[currentIndex].style.opacity = 1;
+
+                }, fadeDuration); // Wait for the fade-out to finish before fading in
             }
-    
-            setInterval(showNextImage, 5000); // Change image every 5 seconds
+
+            // Start the image slider
+            images[currentIndex].style.visibility = 'visible';
+            images[currentIndex].style.opacity = 1;
+
+            setInterval(showNextImage, displayDuration + fadeDuration); // Delay next change to allow for fade-in/fade-out
         });
     </script>
-    
     
 </body>
 </html>
