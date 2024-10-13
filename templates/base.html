@@ -23,32 +23,34 @@
 <body class="d-flex flex-column min-vh-100">  <!-- Ensure body takes full height -->
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container-fluid">
-            <!-- Navbar Brand (Left) -->
-            <a class="navbar-brand" href="/">Cloud Vikings ☁️</a>
-    
-            <!-- Toggler Button (Right-Aligned with ms-auto) -->
-            <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    
-            <!-- Nav Items (Right-Aligned on Desktop/iPad and Centered on Mobile) -->
-            <div class="collapse navbar-collapse justify-content-end" id="navbarsExample08">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/members">Members</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/widgets">Widgets</a> <!-- New link to Widgets page -->
-                    </li>
-                </ul>
-            </div>
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <!-- Navbar Brand (Left) -->
+        <a class="navbar-brand ms-3" href="/">Cloud Vikings ☁️</a> <!-- Added ms-3 for left margin -->
+
+        <!-- Toggler Button (Right-Aligned with ms-auto) -->
+        <button class="navbar-toggler ms-auto me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav Items (Right-Aligned on Desktop/iPad and Centered on Mobile) -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExample08">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/members">Members</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/widgets">Widgets</a> <!-- New link to Widgets page -->
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
+
    
     <!-- Main Content with Background and Flex for Centering -->
     <div class="container-fluid px-4 py-5 d-flex justify-content-center main-content">
@@ -58,47 +60,35 @@
     </div>
 
     <!-- Footer -->
-    <footer class="bg-dark text-light py-4 mt-auto">
-        <div class="container">
-            <div class="row">
-                <!-- About Us Section -->
-                <div class="col-md-4 mb-3 text-md-start text-center">  
-                    <h5>About Us</h5>
-                    <p>We are a top Clash of Clans clan, dedicated to winning wars and growing as a team. Join us and let's conquer the game together!</p>
-                </div>
-    
-                <!-- Social Links Section -->
-                <div class="col-md-4 mb-3 text-center">
-                    <h5>Join Us</h5>
-                    <div class="social-icons-group"> <!-- Group the icons inside this div -->
-                        <a href="https://discord.gg/dPeHccdK8k" class="text-light"><i class="fab fa-discord"></i></a>
-                        <a href="https://link.clashofclans.com/en/?action=OpenClanProfile&tag=29G2P0YUC" class="text-light">
-                            <i class="fas fa-gamepad"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Contact Section -->
-                <div class="col-md-4 mb-3 text-md-end text-center">
-                    <h5>Contact Us</h5>
-                    <p>Email: suavecita924@gmail.com</p>
+<footer class="bg-dark text-light py-4 mt-auto">
+    <div class="container">
+        <div class="row">
+            <!-- Social Links Section (Center) -->
+            <div class="col-md-12 mb-3 text-center">
+                <h5>Join Us</h5>
+                <div class="social-icons-group"> <!-- Group the icons inside this div -->
+                    <a href="https://discord.gg/dPeHccdK8k" class="text-light"><i class="fab fa-discord"></i></a>
+                    <a href="https://link.clashofclans.com/en/?action=OpenClanProfile&tag=29G2P0YUC" class="text-light">
+                        <i class="fas fa-gamepad"></i>
+                    </a>
                 </div>
             </div>
-    
-            <!-- Copyright Row --> 
-            <div class="row">
-                <div class="col text-center">
-                    <p>&copy; {{ current_year }} Made with ❤️ for Cloud Vikings.</p>
-                    <p>All rights reserved.</p>
-                    <p class="disclaimer-text">
-                        This material is unofficial and is not endorsed by Supercell. For more information, see 
-                        <a href="https://www.supercell.com/fan-content-policy/" class="text-light">Supercell's Fan Content Policy</a>.
-                    </p>
-                </div>
-            </div>
-
         </div>
-    </footer>
+
+        <!-- Copyright Row --> 
+        <div class="row">
+            <div class="col text-center">
+                <p>&copy; {{ current_year }} Made with ❤️ for Cloud Vikings.</p>
+                <p>All rights reserved.</p>
+                <p class="disclaimer-text">
+                    This material is unofficial and is not endorsed by Supercell. For more information, see 
+                    <a href="https://www.supercell.com/fan-content-policy/" class="text-light">Supercell's Fan Content Policy</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>

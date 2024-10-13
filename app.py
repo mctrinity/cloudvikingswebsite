@@ -1,4 +1,5 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for
+from flask_mail import Mail, Message
 import os
 import requests
 from dotenv import load_dotenv
@@ -14,6 +15,19 @@ load_dotenv(dotenv_path='.env')
 app.config['CACHE_TYPE'] = 'SimpleCache'
 app.config['CACHE_DEFAULT_TIMEOUT'] = 300  # Cache timeout in seconds (5 minutes)
 cache = Cache(app)
+
+# Email Configuration (Gmail)
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Your Gmail address from .env
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Your Gmail app password from .env
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+
+mail = Mail(app)
+
+# Secret key for flash messages
+app.secret_key = 'your_secret_key'
 
 # Get the API key and clan tag from the .env file
 API_KEY = os.getenv('API_KEY')
@@ -64,7 +78,6 @@ def home():
     )
 
 
-
 # Route to display members of the clan
 @app.route('/members')
 def members():
@@ -78,6 +91,29 @@ def members():
     return render_template('members.html', members=members, current_year=current_year, page="members")
 
 
+# Route to handle form submission from the "Drop Us a Line" form
+@app.route('/contact', methods=['POST'])
+def contact():
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+
+    # Compose email
+    msg = Message(subject=f"Message from {name}",
+                  sender=app.config.get('MAIL_USERNAME'),
+                  recipients=[app.config.get('MAIL_USERNAME')],  # Your Gmail address
+                  body=f"From: {name} <{email}>\n\nMessage:\n{message}")
+
+    try:
+        mail.send(msg)
+        flash('Your message has been sent successfully!', 'success')
+    except Exception as e:
+        flash(f'An error occurred while sending the message: {str(e)}', 'danger')
+
+    return redirect(url_for('home'))
+
+
+# Widgets route (existing route)
 @app.route('/widgets')
 def widgets():
     return render_template('widgets.html')
