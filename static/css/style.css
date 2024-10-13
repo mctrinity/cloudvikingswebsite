@@ -197,6 +197,26 @@
     margin-bottom: 20px; /* Space below the content */
 }
 
+@keyframes fadeInOut {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(1.2);
+    }
+}
+
+
 /* Shadow and animation for the cards */
 .custom-card-shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -267,6 +287,18 @@ footer {
     padding: 20px 0;
 }
 
+/* Override the container padding on small screens */
+@media (max-width: 768px) {
+    footer .container {
+        padding-left: 0;
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+    }
+}
+
+/* Footer stylings */
 footer h5 {
     font-size: 1.25rem;
 }
@@ -313,6 +345,7 @@ footer a:hover {
     font-size: inherit; /* Ensure the link matches the size of the surrounding text */
     color: #f1c40f; /* Adjust color for better visibility */
 }
+
 
 /* Floating Cloud Animation */
 .floating-clouds {
