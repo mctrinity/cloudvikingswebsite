@@ -34,19 +34,18 @@
     <div class="row mt-5 align-items-center" style="min-height: 400px;"> <!-- Flexbox row with vertical centering -->
         <div class="col-md-6 text-center"> <!-- Center text horizontally as well -->
             <h2>About Us</h2>
-            <p>Welcome to {{ clan_name }}! We are a passionate group of Clash of Clans players, united by strategy and teamwork. Our goal is to reach the top while helping each other grow. We pride ourselves on being a friendly and competitive clan that supports both newcomers and veterans alike.</p>
+            <p>Welcome to <strong>{{ clan_name }}</strong>! Founded on February 13, 2016, by a group of passionate gamers, we’ve grown into a community of skilled Clash of Clans players who thrive on strategy and teamwork. More than just a clan, we’re a close-knit group of friends who support each other, whether you're a seasoned veteran or a newcomer. Our mission is to rise to the top together, fueled by cooperation, dedication, and camaraderie.</p>
         </div>
-        <div class="col-md-6 text-center"> <!-- Added text-center to center the image container -->
+        <div class="col-md-6 text-center"> <!-- Center the image container -->
             <img src="{{ url_for('static', filename='images/about_us.png') }}" class="img-fluid rounded d-block mx-auto" alt="About Us Image">
         </div>
     </div>
 
-
     <!-- Drop Us a Line Section -->
     <div class="row mt-5 align-items-center" style="min-height: 400px;"> <!-- Flexbox row with vertical centering -->
         <!-- Image Column (Left) -->
-        <div class="col-md-6">
-            <img src="{{ url_for('static', filename='images/contact_us.png') }}" class="img-fluid rounded" alt="Contact Us Image">
+        <div class="col-md-6 text-center">
+            <img src="{{ url_for('static', filename='images/contact_us.png') }}" class="img-fluid rounded d-block mx-auto" alt="Contact Us Image">
         </div>
 
         <!-- Form Column (Right) -->
