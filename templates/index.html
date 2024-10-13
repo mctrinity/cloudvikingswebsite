@@ -36,10 +36,11 @@
             <h2>About Us</h2>
             <p>Welcome to {{ clan_name }}! We are a passionate group of Clash of Clans players, united by strategy and teamwork. Our goal is to reach the top while helping each other grow. We pride ourselves on being a friendly and competitive clan that supports both newcomers and veterans alike.</p>
         </div>
-        <div class="col-md-6">
-            <img src="{{ url_for('static', filename='images/about_us.png') }}" class="img-fluid rounded" alt="About Us Image">
+        <div class="col-md-6 text-center"> <!-- Added text-center to center the image container -->
+            <img src="{{ url_for('static', filename='images/about_us.png') }}" class="img-fluid rounded d-block mx-auto" alt="About Us Image">
         </div>
     </div>
+
 
     <!-- Drop Us a Line Section -->
     <div class="row mt-5 align-items-center" style="min-height: 400px;"> <!-- Flexbox row with vertical centering -->
