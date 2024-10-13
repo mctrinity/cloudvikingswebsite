@@ -227,13 +227,6 @@
     align-items: center; /* Center both the avatar and the text */
 }
 
-.btn-primary {
-  color: white;
-}
-
-.btn-light {
-  color: #ff6347;
-}
 
 /* Change the color for the h2 in the clan members section */
 h2 {

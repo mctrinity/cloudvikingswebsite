@@ -4,6 +4,14 @@ $primary: #ff5733;  // Override Bootstrap's primary color
 @import "node_modules/bootstrap/scss/bootstrap"; // Import Bootstrap SCSS
 
 
+.btn-primary {
+  color: white !important;
+}
+
+.btn-light {
+  color: #ff6347 !important;
+}
+
 // Custom appearance property fixes with higher specificity and !important to force the override
 [type="submit"] {
   -webkit-appearance: button !important; /* For WebKit-based browsers */
