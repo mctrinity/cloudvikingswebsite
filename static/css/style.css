@@ -287,18 +287,6 @@ footer {
     padding: 20px 0;
 }
 
-/* Override the container padding on small screens */
-@media (max-width: 768px) {
-    footer .container {
-        padding-left: 0;
-        padding-right: 0;
-        margin-left: 0;
-        margin-right: 0;
-        width: 100%;
-    }
-}
-
-/* Footer stylings */
 footer h5 {
     font-size: 1.25rem;
 }
@@ -330,20 +318,27 @@ footer a:hover {
     line-height: 1;
 }
 
-/* Hover Effect for the Icons */
 .social-icons-group a:hover i {
     transform: scale(1.1);
     color: #f1c40f;
 }
 
 .disclaimer-text {
-    font-size: 0.875rem; /* Smaller font size for the disclaimer */
-    line-height: 1.5; /* Increase line spacing for readability */
+    font-size: 0.875rem;
+    line-height: 1.5;
 }
 
 .disclaimer-text a {
-    font-size: inherit; /* Ensure the link matches the size of the surrounding text */
-    color: #f1c40f; /* Adjust color for better visibility */
+    font-size: inherit;
+    color: #f1c40f;
+}
+
+/* Ensure the footer reaches the edges of the screen */
+@media (max-width: 768px) {
+    .container-fluid {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }
 
 
