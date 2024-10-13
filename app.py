@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_mail import Mail, Message
+from email_validator import validate_email, EmailNotValidError  # Import email validation
 import os
 import requests
 from dotenv import load_dotenv
@@ -98,8 +99,18 @@ def contact():
     email = request.form['email']
     message = request.form['message']
 
+    # Server-side email and domain validation
+    try:
+        # Validate the email, including domain validation
+        valid = validate_email(email, check_deliverability=True)  # check_deliverability checks DNS records
+        email = valid.email  # Normalized email address
+    except EmailNotValidError as e:
+        # Flash message and redirect back to the form if email is not valid
+        flash(f"Invalid email: {str(e)}", 'danger')
+        return redirect(url_for('home'))
+
     # Compose email
-    msg = Message(subject=f"Message from {name}",
+    msg = Message(subject=f"Cloud Vikings - Message from {name}",
                   sender=app.config.get('MAIL_USERNAME'),
                   recipients=[app.config.get('MAIL_USERNAME')],  # Your Gmail address
                   body=f"From: {name} <{email}>\n\nMessage:\n{message}")
