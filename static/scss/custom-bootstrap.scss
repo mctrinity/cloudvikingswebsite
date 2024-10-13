@@ -4,7 +4,7 @@ $primary: #ff5733;  // Override Bootstrap's primary color
 @import "node_modules/bootstrap/scss/bootstrap"; // Import Bootstrap SCSS
 
 // Ensure primary button text is white
-.btn-primary, .btn-outline-primary {
+.btn-primary, .btn-light {
   color: white;  // Set the text color to white
 }
 
