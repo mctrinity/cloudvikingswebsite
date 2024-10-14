@@ -285,10 +285,30 @@ h2 {
 footer {
     background-color: #343a40;
     padding: 20px 0;
+    margin: 0; /* Ensure no extra margin */
+    width: 100%; /* Make sure it spans the full width */
 }
 
-footer h5 {
-    font-size: 1.25rem;
+footer .container-fluid {
+    padding-left: 0; /* Remove padding on the left */
+    padding-right: 0; /* Remove padding on the right */
+    margin-left: 0; /* Remove any margin on the left */
+    margin-right: 0; /* Remove any margin on the right */
+    width: 100%; /* Ensure the container takes the full width */
+}
+
+@media (max-width: 768px) {
+    footer {
+        padding-left: 0; /* Remove padding on the left for small screens */
+        padding-right: 0; /* Remove padding on the right for small screens */
+    }
+
+    footer .container-fluid {
+        padding-left: 0; /* Ensure there's no padding on small screens */
+        padding-right: 0;
+        margin-left: 0;
+        margin-right: 0;
+    }
 }
 
 footer a {
@@ -325,13 +345,15 @@ footer a:hover {
 
 .disclaimer-text {
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1.5;  /* Ensures consistent line spacing */
+    margin-bottom: 0.3rem; /* Adjust as needed to control the gap between lines */
 }
 
 .disclaimer-text a {
     font-size: inherit;
     color: #f1c40f;
 }
+
 
 /* Ensure the footer reaches the edges of the screen */
 @media (max-width: 768px) {
