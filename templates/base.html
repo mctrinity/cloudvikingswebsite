@@ -26,9 +26,16 @@
     <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-        <!-- Navbar Brand (Left) -->
-        <a class="navbar-brand ms-3" href="/">Cloud Vikings ☁️</a> <!-- Added ms-3 for left margin -->
-
+        <!-- Navbar Brand (Left) with GIF Logo and Clan Name -->
+        <a class="navbar-brand custom-navbar-brand d-flex align-items-center" href="/">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logo.gif') }}" alt="Cloud Vikings" class="logo-gif">
+            </div>
+            <div class="clan-name-container ms-2">
+                <span class="clan-name">Cloud Vikings ☁️</span>
+            </div>
+        </a>
+        
         <!-- Toggler Button (Right-Aligned with ms-auto) -->
         <button class="navbar-toggler ms-auto me-3" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample08" aria-controls="navbarsExample08" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>

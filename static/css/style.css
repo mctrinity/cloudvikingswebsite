@@ -1,27 +1,71 @@
 /* Navbar */
 .navbar {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
-    width: 100%; /* Ensure the navbar spans the full width */
-    background-color: #343a40; /* Background color */
-    position: relative;
-    z-index: 1000; /* Ensure it's always on top */
+    width: 100%;
+    background-color: #343a40;
+    display: flex;
+    justify-content: space-between;  /* Keep brand on the left, nav items on the right */
+    align-items: center;
 }
+
 
 .navbar .container-fluid {
     padding-left: 0;
     padding-right: 0;
 }
 
-/* Adjust the brand spacing */
-.custom-navbar-brand {
-    margin-left: 2rem;
-    margin-right: 2rem;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+/* Navbrand logo and clan name stylings */
+
+.logo-gif {
+    height: 50px;
+    max-height: 50px;
+    width: auto;
+    border-radius: 10px;
+    flex-shrink: 0;  /* Prevent the logo from shrinking */
 }
+
+
+.clan-name-container {
+    flex-grow: 1;  /* Allow the clan name container to grow */
+    flex-shrink: 1;  /* Allow the clan name container to shrink if necessary */
+}
+
+.clan-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;  /* Prevent wrapping */
+    overflow: hidden;
+}
+
+
+.custom-navbar-brand {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: 2rem;
+    margin-right: auto;  /* Push the navigation items to the right */
+}
+
+
+/* Responsive design for smaller screens (phone) */
+@media (max-width: 576px) {
+    .clan-name {
+        font-size: 0.9rem;  /* Reduce font size for smaller screens */
+    }
+
+    .logo-gif {
+        height: 40px;  /* Reduce logo size for mobile */
+    }
+
+    .custom-navbar-brand {
+        margin-left: 0.5rem;  /* Smaller left margin */
+    }
+}
+
 
 /* Center navbar items in mobile view */
 .navbar-collapse {
