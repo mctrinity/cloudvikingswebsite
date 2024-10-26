@@ -120,38 +120,20 @@ def contact():
     return redirect(url_for('home'))
 
 
-# Widgets route
+# Widgets route (existing route)
 @app.route('/widgets')
 def widgets():
     open_weather_api_key = os.getenv("OPEN_WEATHER_API_KEY")
     mediastack_api_key = os.getenv("MEDIASTACK_API_KEY")
     tmdb_api_key = os.getenv("TMDB_API_KEY")
 
-    # Fetch trending movies data
-    trending_movies = get_trending_movies()
-
     return render_template(
         'widgets.html',
         openweather_api_key=open_weather_api_key,
         mediastack_api_key=mediastack_api_key,
         tmdb_api_key=tmdb_api_key,
-        trending_movies=trending_movies,
-        page="infohub"
+        page="infohub"  # Specify "infohub" for the widgets page
     )
-
-
-@cache.cached(timeout=14400, key_prefix='trending_movies')  # Cache for 4 hours
-def get_trending_movies():
-    tmdb_api_key = os.getenv("TMDB_API_KEY")
-    trending_url = f"https://api.themoviedb.org/3/trending/movie/day?api_key={tmdb_api_key}"
-
-    try:
-        response = requests.get(trending_url)
-        response.raise_for_status()  # Raise an error if the request failed
-        return response.json()  # Return the JSON data
-    except requests.exceptions.RequestException as e:
-        print(f"Error fetching trending movies: {e}")
-        return {}  # Return an empty dict if there's an error
 
 
 if __name__ == '__main__':

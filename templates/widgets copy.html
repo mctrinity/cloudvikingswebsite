@@ -31,22 +31,11 @@
                 <div class="card-body text-center">
                     <h5 class="card-title">Trending Movies</h5>
                     <div id="single-movie" class="widget-content">
-                        {% if trending_movies.results %}
-                            {% for movie in trending_movies.results[:5] %}  <!-- Display only the top 5 movies -->
-                                <div class="movie-item">
-                                    <a href="https://www.imdb.com/title/{{ movie.imdb_id }}" target="_blank">
-                                        <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }} poster" />
-                                    </a>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <p>No trending movies available.</p>
-                        {% endif %}
+                        <!-- The rotating movie will be displayed here -->
                     </div>
                 </div>
             </div>
         </div>
-        
     </div>
 </div>
 
