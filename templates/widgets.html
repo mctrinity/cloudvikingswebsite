@@ -182,7 +182,10 @@
         }
 
         // News widget functionality
-        fetch(`http://api.mediastack.com/v1/news?access_key=${mediastackApiKey}&countries=us&limit=5`)
+        // News widget functionality with HTTPS endpoint
+        const newsUrl = `https://api.mediastack.com/v1/news?access_key=${mediastackApiKey}&countries=us&limit=5`;
+
+        fetch(newsUrl)
             .then(response => response.json())
             .then(data => {
                 const newsContainer = document.getElementById('news-widget');
