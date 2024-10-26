@@ -28,7 +28,7 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 
 # Secret key for flash messages
-app.secret_key = 'your_secret_key'
+app.secret_key = os.urandom(24)
 
 # Get the API key and clan tag from the .env file
 API_KEY = os.getenv('API_KEY')
@@ -55,16 +55,15 @@ def get_clan_data():
 # Route for the home page
 @app.route('/')
 def home():
-    current_year = datetime.now().year  # Get current year
+    current_year = datetime.now().year
     clan_data = get_clan_data()
-
-    # Initialize default values in case data is not present
+    # Initialize default values
     clan_name = clan_data.get('name', 'Unknown Clan')
     clan_level = clan_data.get('clanLevel', 'N/A')
     clan_points = clan_data.get('clanPoints', 'N/A')
     cwl_rank = clan_data.get('warLeague', {}).get('name', 'N/A')
     capital_hall_level = clan_data.get('clanCapital', {}).get('capitalHallLevel', 'N/A')
-    member_count = len(clan_data.get('memberList', []))  # Get the count of members in the list
+    member_count = len(clan_data.get('memberList', []))
 
     return render_template(
         'index.html',
@@ -75,19 +74,16 @@ def home():
         capital_hall_level=capital_hall_level,
         member_count=member_count,
         current_year=current_year,
-        page="home"
+        page="home"  # Specify "home" for this page
     )
 
 
 # Route to display members of the clan
 @app.route('/members')
 def members():
-    current_year = datetime.now().year  # Get current year
+    current_year = datetime.now().year
     clan_data = get_clan_data()
-    if 'memberList' in clan_data:
-        members = clan_data['memberList']
-    else:
-        members = []  # If there's an error, show an empty list
+    members = clan_data.get('memberList', [])
 
     return render_template('members.html', members=members, current_year=current_year, page="members")
 
@@ -127,7 +123,17 @@ def contact():
 # Widgets route (existing route)
 @app.route('/widgets')
 def widgets():
-    return render_template('widgets.html')
+    open_weather_api_key = os.getenv("OPEN_WEATHER_API_KEY")
+    mediastack_api_key = os.getenv("MEDIASTACK_API_KEY")
+    tmdb_api_key = os.getenv("TMDB_API_KEY")
+
+    return render_template(
+        'widgets.html',
+        openweather_api_key=open_weather_api_key,
+        mediastack_api_key=mediastack_api_key,
+        tmdb_api_key=tmdb_api_key,
+        page="infohub"  # Specify "infohub" for the widgets page
+    )
 
 
 if __name__ == '__main__':
