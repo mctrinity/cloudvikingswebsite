@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import Flask, render_template, request, flash, redirect, url_for, jsonify
 from flask_mail import Mail, Message
 from email_validator import validate_email, EmailNotValidError  # Import email validation
 import os
@@ -97,27 +97,22 @@ def contact():
 
     # Server-side email and domain validation
     try:
-        # Validate the email, including domain validation
-        valid = validate_email(email, check_deliverability=True)  # check_deliverability checks DNS records
-        email = valid.email  # Normalized email address
+        valid = validate_email(email, check_deliverability=True)
+        email = valid.email
     except EmailNotValidError as e:
-        # Flash message and redirect back to the form if email is not valid
-        flash(f"Invalid email: {str(e)}", 'danger')
-        return redirect(url_for('home'))
+        return jsonify({"status": "error", "message": f"Invalid email: {str(e)}"})
 
     # Compose email
     msg = Message(subject=f"Cloud Vikings - Message from {name}",
                   sender=app.config.get('MAIL_USERNAME'),
-                  recipients=[app.config.get('MAIL_USERNAME')],  # Your Gmail address
+                  recipients=[app.config.get('MAIL_USERNAME')],
                   body=f"From: {name} <{email}>\n\nMessage:\n{message}")
 
     try:
         mail.send(msg)
-        flash('Your message has been sent successfully!', 'success')
+        return jsonify({"status": "success", "message": "Your message has been sent successfully!"})
     except Exception as e:
-        flash(f'An error occurred while sending the message: {str(e)}', 'danger')
-
-    return redirect(url_for('home'))
+        return jsonify({"status": "error", "message": f"An error occurred while sending the message: {str(e)}"})
 
 
 # Widgets route
@@ -126,6 +121,9 @@ def widgets():
     open_weather_api_key = os.getenv("OPEN_WEATHER_API_KEY")
     mediastack_api_key = os.getenv("MEDIASTACK_API_KEY")
     tmdb_api_key = os.getenv("TMDB_API_KEY")
+
+    user_ip = request.remote_addr  # Get user's IP address
+    ip_info = get_ip_info(user_ip)
 
     # Fetch trending movies data
     trending_movies = get_trending_movies()
@@ -136,10 +134,42 @@ def widgets():
         mediastack_api_key=mediastack_api_key,
         tmdb_api_key=tmdb_api_key,
         trending_movies=trending_movies,
+        ip_info=ip_info,
         page="infohub"
     )
 
+# Refresh IP Info
+# @cache.cached(timeout=300, key_prefix='ip_info')
+def get_ip_info(ip_address):
+    ipinfo_api_key = os.getenv("IPINFO_API_KEY")
+    url = f"https://ipinfo.io/{ip_address}?token={ipinfo_api_key}"
 
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        data = response.json()
+        print("IP Info Retrieved:", data)  # Debug: Print IP info to console
+        return data  # Return IP data if successful
+    except requests.exceptions.RequestException as e:
+        print(f"Error fetching IP info: {e}")
+        return {
+            "ip": ip_address,
+            "city": "Unavailable",
+            "region": "Unavailable",
+            "country": "Unavailable",
+            "loc": "Unavailable"
+        }
+
+# IP Look-up route
+@app.route('/ip_lookup', methods=['POST'])
+def ip_lookup():
+    input_ip = request.form.get('input_ip')
+    ip_info = get_ip_info(input_ip)  # Fetch location info for the entered IP address
+
+    # Return JSON response instead of rendering a template
+    return jsonify(ip_info)
+
+# Refresh trending movies
 @cache.cached(timeout=14400, key_prefix='trending_movies')  # Cache for 4 hours
 def get_trending_movies():
     tmdb_api_key = os.getenv("TMDB_API_KEY")
@@ -152,7 +182,12 @@ def get_trending_movies():
     except requests.exceptions.RequestException as e:
         print(f"Error fetching trending movies: {e}")
         return {}  # Return an empty dict if there's an error
-
+    
+# For testing only, clear cache
+@app.route('/clear_cache')
+def clear_cache():
+    cache.clear()
+    return "Cache cleared!"
 
 if __name__ == '__main__':
     app.run(debug=True)

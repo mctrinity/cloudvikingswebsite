@@ -425,3 +425,26 @@ footer a:hover {
         transform: translateY(0); /* Returns to original position */
     }
 }
+
+/* Styling for flash messages near the button */
+.flash-messages {
+    margin-top: 10px;
+}
+
+.flash-messages .alert {
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.flash-messages .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.flash-messages .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}

@@ -42,7 +42,7 @@
     </div>
 
     <!-- Drop Us a Line Section -->
-    <div class="row mt-5 align-items-center" style="min-height: 400px;"> <!-- Flexbox row with vertical centering -->
+    <div class="row mt-5 align-items-center" style="min-height: 400px;">
         <!-- Image Column (Left) -->
         <div class="col-md-6 text-center">
             <img src="{{ url_for('static', filename='images/contact_us.png') }}" class="img-fluid rounded d-block mx-auto" alt="Contact Us Image">
@@ -51,7 +51,7 @@
         <!-- Form Column (Right) -->
         <div class="col-md-6">
             <h2>Drop Us a Line</h2>
-            <form action="{{ url_for('contact') }}" method="POST">
+            <form action="{{ url_for('contact') }}" method="POST" id="contactForm">
                 <div class="form-group">
                     <label for="name">Name:</label>
                     <input type="text" id="name" name="name" class="form-control" required>
@@ -65,10 +65,69 @@
                     <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
                 </div>
                 <button type="submit" class="btn btn-primary mt-3">Send Message</button>
+                
+                <!-- Flash Messages Displayed Here -->
+                <div class="flash-messages mt-3"></div>
             </form>
         </div>
     </div>
 
 </div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const contactForm = document.getElementById("contactForm");
+        const submitButton = contactForm.querySelector("button[type='submit']");
+        const flashMessageContainer = document.querySelector(".flash-messages");
+
+        contactForm.addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Disable the button to prevent multiple submissions
+            submitButton.disabled = true;
+            submitButton.textContent = "Sending...";
+
+            const formData = new FormData(contactForm);
+
+            fetch("{{ url_for('contact') }}", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Clear previous messages
+                flashMessageContainer.innerHTML = "";
+
+                // Create a new message div based on the response status
+                const messageDiv = document.createElement("div");
+                messageDiv.className = `alert alert-${data.status === "success" ? "success" : "danger"}`;
+                messageDiv.innerText = data.message;
+
+                // Append the message div to the flash messages container
+                flashMessageContainer.appendChild(messageDiv);
+
+                // Clear form inputs if successful
+                if (data.status === "success") {
+                    contactForm.reset();
+                }
+            })
+            .catch(error => {
+                console.error("Error submitting form:", error);
+
+                // Display a general error message if the request fails
+                flashMessageContainer.innerHTML = `
+                    <div class="alert alert-danger">An error occurred. Please try again.</div>
+                `;
+            })
+            .finally(() => {
+                // Re-enable the button and reset its text
+                submitButton.disabled = false;
+                submitButton.textContent = "Send Message";
+            });
+        });
+    });
+</script>
+
+
 
 {% endblock %}

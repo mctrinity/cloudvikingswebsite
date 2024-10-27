@@ -4,140 +4,220 @@
 <div class="container mt-4">
     <h2 class="mb-4 text-center">Info Hub</h2>
 
-    <div class="row">
+    <div class="row widget-container">
         <!-- Weather Widget -->
         <div class="col-md-4 custom-card-spacing">
-            <div class="card custom-card-shadow">
+            <div class="card custom-card-shadow widget-card">
+                <h5 class="card-title">Local Weather</h5>
                 <div class="card-body text-center">
-                    <h5 class="card-title">Local Weather</h5>
                     <div id="weather-info" class="widget-content">Loading weather data...</div>
                 </div>
             </div>
         </div>
 
+
         <!-- News Widget -->
         <div class="col-md-4 custom-card-spacing">
-            <div class="card custom-card-shadow">
+            <div class="card custom-card-shadow widget-card">
+                <h5 class="card-title">Latest News</h5>
                 <div class="card-body text-center">
-                    <h5 class="card-title">Latest News</h5>
-                    <div id="news-widget" class="widget-content">Loading news...</div>
+                    <!-- <h5 class="card-title">Latest News</h5> -->
+                    <div id="news-widget" class="widget-content">
+                        Loading news...
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Trending Movies Widget -->
         <div class="col-md-4 custom-card-spacing">
-            <div class="card custom-card-shadow">
+            <div class="card custom-card-shadow widget-card">
+                <h5 class="card-title">Trending Movies</h5>
                 <div class="card-body text-center">
-                    <h5 class="card-title">Trending Movies</h5>
                     <div id="single-movie" class="widget-content">
-                        {% if trending_movies.results %}
-                            {% for movie in trending_movies.results[:5] %}  <!-- Display only the top 5 movies -->
-                                <div class="movie-item">
-                                    <a href="https://www.imdb.com/title/{{ movie.imdb_id }}" target="_blank">
-                                        <img src="https://image.tmdb.org/t/p/w200{{ movie.poster_path }}" alt="{{ movie.title }} poster" />
-                                    </a>
-                                </div>
-                            {% endfor %}
-                        {% else %}
-                            <p>No trending movies available.</p>
-                        {% endif %}
+                        <div class="movie-item">
+                            <!-- Placeholder for the image; it will be inserted dynamically by JavaScript -->
+                            <p>Loading movies...</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
+
+        <!-- IP Location Lookup Widget -->
+        <div class="col-md-4 custom-card-spacing">
+            <div class="card custom-card-shadow widget-card">
+                <h5 class="card-title">IP Location Lookup</h5>
+                <div class="card-body text-center">
+                    <!-- <h5 class="card-title">IP Location Lookup</h5> -->
+                    <form id="ipLookupForm" method="POST">
+                        <input type="text" name="input_ip" placeholder="Enter IP Address" required class="form-control mb-2">
+                        <button type="submit" id="lookupButton" class="btn btn-primary">Lookup</button>
+                    </form>
+                    <div id="location-widget" class="widget-content mt-3">
+                        <p id="ip-location-output">Enter an IP address to see location details.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
-<!-- Add custom CSS styling for uniform widget sizing -->
 <style>
-    /* Base styling for all widgets */
-    .widget-content {
+    /* Uniform card size and content padding */
+    .widget-container .widget-card {
         width: 100%;
-        max-width: 400px;
-        height: 300px;
+        max-width: 350px;
+        height: 340px; /* Increased height to provide more space */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-bottom: 15px; /* Extra bottom padding */
+    }
+
+    /* Styling for card title */
+    .widget-card .card-title {
+        font-size: 1.1em;
+        color: #ff5722;
+        text-align: center;
+        padding: 10px 0;
+        margin: 0;
+        border-bottom: 1px solid #ddd; /* Optional: Adds a separator line */
+    }
+
+    /* Card body with consistent padding */
+    .widget-card .card-body {
+        padding: 15px; /* Even padding for all sides */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: calc(100% - 40px); /* Adjust height to fit below title */
+    }
+
+    /* Widget content within card body */
+    .widget-content {
+        max-width: 330px;
+        padding-bottom: 15px; /* Bottom padding for content */
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;
-        border-radius: 8px;
     }
 
-    /* Weather widget styling */
+    /* Styling for the weather widget */
+    #weather-info {
+        padding: 15px;
+        border-radius: 8px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
     #weather-info .icon {
         width: 80px;
         height: 80px;
         margin-bottom: 10px;
     }
+
+    #weather-info .location {
+        font-size: 1em;
+        color: #555;
+        margin-bottom: 5px;
+    }
+
     #weather-info .temperature {
-        font-size: 1.8em;
+        font-size: 1.6em;
         font-weight: bold;
         color: #ff5722;
     }
+
     #weather-info .description {
-        font-size: 1em;
-        color: #555;
-        text-transform: capitalize;
-    }
-    #weather-info .location {
         font-size: 0.9em;
         color: #777;
+        text-transform: capitalize;
     }
 
-    /* News widget adjustments for consistent layout */
+
+    /* News widget adjustments */
     #news-widget {
         overflow-y: auto;
-        text-align: left;
         padding: 10px;
+        text-align: left;
     }
     #news-widget p {
         font-size: 0.9em;
-        margin-bottom: 5px;
+        color: #555;
+        margin-bottom: 15px;
     }
     #news-widget a {
-        text-decoration: none;
         color: #ff5722;
+        text-decoration: none;
     }
     #news-widget a:hover {
         text-decoration: underline;
     }
 
-    /* Movie widget styling */
-    .movie-item img {
-        max-width: 70%; /* Consistent size for movie posters */
-        max-height: 180px;
-        border-radius: 5px;
-        object-fit: cover;
-        margin-bottom: 10px;
-    }
-    .movie-item p {
-        font-size: 1em;
-        color: #333;
-        margin: 0;
+    /* Movie widget container adjustments */
+    #single-movie {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 5px;
+        overflow: hidden;
     }
 
+    /* Reduced size for movie image */
+    .movie-item img {
+        max-width: 85%; /* Slightly reduced width to fit better */
+        max-height: 180px; /* Increased height limit to fit within the larger card */
+        object-fit: contain;
+        border-radius: 5px;
+        margin-top: 10px; /* Space between image and title */
+    }
+
+    /* IP Info widget adjustments */
+    #location-widget {
+        padding: 5px;
+        max-height: 150px;
+        overflow-y: auto;
+        text-align: center;
+    }
+    #location-widget p {
+        font-size: 0.85em;
+        color: #555;
+        margin: 2px 0;
+    }
+
+    /* General card title styling */
     .card-title {
+        font-size: 1.1em;
         color: #ff5722;
     }
 </style>
 
-<!-- JavaScript for Weather, News, and Movie widgets -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const weatherApiKey = "{{ openweather_api_key }}";
         const mediastackApiKey = "{{ mediastack_api_key }}";
         const tmdbApiKey = "{{ tmdb_api_key }}";
 
-        // Weather widget functionality with dynamic background color
-        function fetchWeather(url, lat, lon) {
+        // Weather widget: Display compact weather data with icon and background
+        function fetchWeather(url) {
             fetch(url)
                 .then(response => response.json())
                 .then(data => {
                     if (data.cod === 200) {
+                        // Prepare icon, location, temperature, and condition for display
                         const iconUrl = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
                         const location = `${data.name}, ${data.sys.country}`;
+                        const temperature = `${data.main.temp}°C`;
+                        const description = data.weather[0].description;
                         const condition = data.weather[0].main.toLowerCase();
 
                         // Determine background color based on main weather condition
@@ -164,22 +244,26 @@
                                 break;
                         }
 
-                        // Apply the background color
-                        document.querySelector('#weather-info').style.backgroundColor = backgroundColor;
-
-                        document.getElementById('weather-info').innerHTML = `
+                        // Apply the background color and insert all weather details
+                        const weatherInfo = document.getElementById('weather-info');
+                        weatherInfo.style.backgroundColor = backgroundColor;
+                        weatherInfo.innerHTML = `
                             <div class="location">${location}</div>
-                            <img src="${iconUrl}" alt="${data.weather[0].description}" class="icon" />
-                            <div class="temperature">${data.main.temp}°C</div>
-                            <div class="description">${data.weather[0].description}</div>
+                            <img src="${iconUrl}" alt="${description}" class="icon" />
+                            <div class="temperature">${temperature}</div>
+                            <div class="description">${description}</div>
                         `;
                     } else {
                         document.getElementById('weather-info').innerText = "Error loading weather data.";
                     }
                 })
-                .catch(error => console.error('Error fetching weather data:', error));
+                .catch(error => {
+                    console.error('Error fetching weather data:', error);
+                    document.getElementById('weather-info').innerText = "Error loading weather data.";
+                });
         }
 
+        // Attempt geolocation; fallback to London if denied
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 (position) => {
@@ -192,79 +276,131 @@
             fetchWeather(`https://api.openweathermap.org/data/2.5/weather?q=London&appid=${weatherApiKey}&units=metric`);
         }
 
-        // News widget functionality
-        // News widget functionality with HTTPS endpoint
-        const newsUrl = `https://api.mediastack.com/v1/news?access_key=${mediastackApiKey}&countries=us&limit=5`;
+        
 
+        // Fetch top 3 news articles
+        const newsUrl = `https://api.mediastack.com/v1/news?access_key=${mediastackApiKey}&countries=us&limit=3`;
         fetch(newsUrl)
             .then(response => response.json())
             .then(data => {
                 const newsContainer = document.getElementById('news-widget');
-                newsContainer.innerHTML = ''; // Clear loading text
+                newsContainer.innerHTML = '';
                 data.data.forEach(article => {
-                    const newsItem = document.createElement('p');
-                    newsItem.innerHTML = `<a href="${article.url}" target="_blank">${article.title}</a>`;
-                    newsContainer.appendChild(newsItem);
+                    newsContainer.innerHTML += `<p><a href="${article.url}" target="_blank">${article.title}</a></p>`;
                 });
             })
             .catch(error => console.error('Error fetching news:', error));
 
-        // Movie widget functionality
-        const moviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbApiKey}`;
+        // Display a single movie poster in rotation
+        // Array to hold movie data and a variable to keep track of the current index
 
         let movies = [];
         let currentIndex = 0;
+        const moviesUrl = `https://api.themoviedb.org/3/trending/movie/day?api_key=${tmdbApiKey}`;
 
-        // Fetch Trending Movies and Save the First Five
+        // Fetch trending movies and then their IMDb IDs
         fetch(moviesUrl)
             .then(response => response.json())
             .then(data => {
-                movies = data.results.slice(0, 5);
-                fetchMovieDetails(); // Fetch IMDb IDs for each movie
-                startMovieRotation(); // Start the rotation
+                movies = data.results.slice(0, 5); // Limit to the top 5 movies
+                return fetchIMDbIDs(movies); // Fetch IMDb IDs for each movie
+            })
+            .then(() => {
+                // Start rotating through movies only after all IMDb IDs are fetched
+                startMovieRotation();
             })
             .catch(error => {
                 console.error('Error fetching movies:', error);
                 document.getElementById('single-movie').innerText = "Error loading movies.";
             });
 
-        // Fetch IMDb ID for each movie
-        function fetchMovieDetails() {
-            movies.forEach((movie, index) => {
-                const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${tmdbApiKey}`;
-
-                fetch(movieDetailsUrl)
-                    .then(response => response.json())
-                    .then(details => {
-                        movies[index].imdb_id = details.imdb_id; // Save IMDb ID to the movie object
-                        if (index === 0) displayMovie(); // Display the first movie after fetching IMDb ID
-                    })
-                    .catch(error => console.error('Error fetching movie details:', error));
-            });
+        // Fetch IMDb IDs for each movie and return a promise for completion
+        function fetchIMDbIDs(movies) {
+            return Promise.all(
+                movies.map((movie, index) => {
+                    const movieDetailsUrl = `https://api.themoviedb.org/3/movie/${movie.id}?api_key=${tmdbApiKey}`;
+                    
+                    return fetch(movieDetailsUrl)
+                        .then(response => response.json())
+                        .then(details => {
+                            movies[index].imdb_id = details.imdb_id; // Store IMDb ID
+                        })
+                        .catch(error => console.error(`Error fetching details for movie ID ${movie.id}:`, error));
+                })
+            );
         }
 
-        // Function to display the current movie
+        // Display the current movie
         function displayMovie() {
-            const singleMovieContainer = document.getElementById('single-movie');
-            if (!singleMovieContainer || movies.length === 0) return;
-
             const movie = movies[currentIndex];
-            const imdbLink = movie.imdb_id ? `https://www.imdb.com/title/${movie.imdb_id}/` : '#';
 
-            singleMovieContainer.innerHTML = `
-                <a href="${imdbLink}" target="_blank" style="text-decoration: none;">
-                    <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title} poster" />
-                </a>
-            `;
+            // Ensure movie data is defined before proceeding
+            if (movie && movie.poster_path && movie.imdb_id) {
+                const imdbLink = `https://www.imdb.com/title/${movie.imdb_id}/`;
+                document.getElementById('single-movie').innerHTML = `
+                    <a href="${imdbLink}" target="_blank">
+                        <img src="https://image.tmdb.org/t/p/w200${movie.poster_path}" alt="${movie.title} poster" />
+                    </a>
+                `;
+            } else {
+                console.error("Movie data is incomplete or undefined. Movie data:", movie);
+                document.getElementById('single-movie').innerHTML = "<p>Movie data not available.</p>";
+            }
         }
 
-        // Start rotating through the movies
+        // Rotate through movies every 3 seconds
         function startMovieRotation() {
+            displayMovie(); // Show the first movie immediately
             setInterval(() => {
                 currentIndex = (currentIndex + 1) % movies.length;
                 displayMovie();
-            }, 3000); // Rotate every 3 seconds
+            }, 3000);
         }
+
     });
 </script>
+
+
+<!-- AJAX script for IPInfo lookup -->
+<script>    
+    document.getElementById('ipLookupForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the form from refreshing the page
+
+        const formData = new FormData(this);
+        const inputIP = formData.get('input_ip');
+        const lookupButton = document.getElementById('lookupButton');
+
+        // Disable the button and change its text to show loading state
+        lookupButton.disabled = true;
+        lookupButton.textContent = 'Loading...';
+
+        fetch('/ip_lookup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams({input_ip: inputIP})
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Update the location widget with the fetched IP data
+            document.getElementById('ip-location-output').innerHTML = `
+                <p><strong>IP:</strong> ${data.ip || 'Not available'}</p>
+                <p><strong>City:</strong> ${data.city || 'Not available'}</p>
+                <p><strong>Region:</strong> ${data.region || 'Not available'}</p>
+                <p><strong>Country:</strong> ${data.country || 'Not available'}</p>
+            `;
+        })
+        .catch(error => {
+            console.error('Error fetching IP info:', error);
+            document.getElementById('ip-location-output').innerHTML = `<p>Error loading IP data. Please try again.</p>`;
+        })
+        .finally(() => {
+            // Re-enable the button and reset the text
+            lookupButton.disabled = false;
+            lookupButton.textContent = 'Lookup';
+        });
+    });
+</script>
+
 {% endblock %}
