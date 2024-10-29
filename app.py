@@ -119,7 +119,7 @@ def contact():
 @app.route('/widgets')
 def widgets():
     open_weather_api_key = os.getenv("OPEN_WEATHER_API_KEY")
-    mediastack_api_key = os.getenv("MEDIASTACK_API_KEY")
+    bing_news_api_key = os.getenv("BING_NEWS_API_KEY")  # Updated API key
     tmdb_api_key = os.getenv("TMDB_API_KEY")
 
     user_ip = request.remote_addr  # Get user's IP address
@@ -131,12 +131,13 @@ def widgets():
     return render_template(
         'widgets.html',
         openweather_api_key=open_weather_api_key,
-        mediastack_api_key=mediastack_api_key,
+        bing_news_api_key=bing_news_api_key,  # Pass Bing API key
         tmdb_api_key=tmdb_api_key,
         trending_movies=trending_movies,
         ip_info=ip_info,
         page="infohub"
     )
+
 
 # Refresh IP Info
 # @cache.cached(timeout=300, key_prefix='ip_info')
