@@ -67,13 +67,13 @@
     /* Uniform card size and content padding */
     .widget-container .widget-card {
         width: 100%;
-        max-width: 350px;
-        height: 340px; /* Increased height to provide more space */
+        max-width: 400px; /* Increase this value for a wider card */
+        height: 400px; /* Increase this value for a taller card */
         overflow: hidden;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 15px; /* Extra bottom padding */
+        padding-bottom: 15px;
     }
 
     /* Styling for card title */
@@ -98,8 +98,8 @@
 
     /* Widget content within card body */
     .widget-content {
-        max-width: 330px;
-        padding-bottom: 15px; /* Bottom padding for content */
+        max-width: 360px; /* Ensure content scales with the larger card */
+        padding: 15px; /* Add more padding if needed */
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -181,7 +181,7 @@
 
     .news-thumbnail {
         width: 100%; /* Allows scaling based on max-width */
-        max-width: 150px; /* Increase this value to make the image larger */
+        max-width: 180px; /* Increase this value to make the image larger */
         height: auto; /* Maintains aspect ratio */
         border-radius: 5px;
     }
