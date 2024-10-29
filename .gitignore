@@ -16,6 +16,9 @@ instance/
 .env
 *.env
 
+# Others
+*-backup*
+
 # VS Code settings
 .vscode/
 

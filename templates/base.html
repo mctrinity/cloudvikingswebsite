@@ -19,8 +19,11 @@
         <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
+    <!-- Holiday Themes -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/holidayThemes.css') }}">
+
 </head>
-<body class="d-flex flex-column min-vh-100">  <!-- Ensure body takes full height -->
+<body class="d-flex flex-column min-vh-100 loading" style="background-color: #1b1b1b;">
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -55,7 +58,8 @@
     </nav>
    
     <!-- Main Content with Background and Flex for Centering -->
-    <div class="container-fluid px-4 py-5 d-flex justify-content-center main-content">
+    <!-- <div class="container-fluid px-4 py-5 d-flex justify-content-center loading main-content"> -->
+    <div class="container-fluid px-4 py-5 d-flex justify-content-center loading">
         <div class="w-100" style="max-width: 1200px;">
             {% block content %}{% endblock %}
         </div>
@@ -132,6 +136,16 @@
             setInterval(showNextImage, displayDuration + fadeDuration); // Delay next change to allow for fade-in/fade-out
         });
     </script>
+
+    <script src="{{ url_for('static', filename='js/holidayTheme.js') }}"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.remove("loading"); // Remove the 'loading' class
+            document.body.classList.add("loaded"); // Add the 'loaded' class
+        });
+    </script>
+    
     
 </body>
 </html>

@@ -1,3 +1,83 @@
+body {
+    backface-visibility: hidden;
+}
+
+/* In your main CSS file, early on */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1b1b1b; /* Dark color to reduce flash in dark mode */
+    }
+}
+
+/* Add a temporary background while loading */
+body.loading {
+    background-color: #1b1b1b; /* Matches Halloween or your theme color */
+}
+
+/* Loading state: Elements start hidden or transparent */
+.loading .widget-card {
+    opacity: 0;
+    background-color: transparent;
+}
+
+/* Loaded state: Elements fade in with final background color */
+.loaded .widget-card {
+    opacity: 1;
+    background-color: #f8f9fa; /* or theme-specific color */
+    transition: opacity 0.5s ease, background-color 0.5s ease;
+}
+
+/* Adjust theme-specific backgrounds */
+body.loaded.halloween .widget-card {
+    background-color: #2d2d2d;
+}
+body.loaded.thanksgiving .widget-card {
+    background-color: #f3eac2;
+}
+body.loaded.christmas .widget-card {
+    background-color: #e0f7fa;
+}
+body.loaded.new-year .widget-card {
+    background-color: #f0e68c;
+}
+
+/* Initial state for hero text: transparent while loading */
+.loading .clan-details h1,
+.loading .clan-details p {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* Loaded state for hero text: fully visible */
+.loaded .clan-details h1,
+.loaded .clan-details p {
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+/* Apply theme-specific colors in loaded state */
+.loaded.halloween .clan-details h1,
+.loaded.halloween .clan-details p {
+    color: #ffa500;
+}
+
+.loaded.thanksgiving .clan-details h1,
+.loaded.thanksgiving .clan-details p {
+    color: #6b3a00;
+}
+
+.loaded.christmas .clan-details h1,
+.loaded.christmas .clan-details p {
+    color: #d32f2f;
+}
+
+.loaded.new-year .clan-details h1,
+.loaded.new-year .clan-details p {
+    color: #ffd700;
+}
+
+
+
 /* Navbar */
 .navbar {
     padding-top: 1rem;
@@ -126,7 +206,7 @@
     padding: 20px; /* Adds padding inside the clan details */
     font-family: 'Roboto', sans-serif; /* New font family */
     color: #333; /* Adjusted text color */
-    background-color: #f8f9fa; /* Light background color */
+    /* background-color: #f8f9fa; */
     border-radius: 10px; /* Rounded corners */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
     text-align: center; /* Center-align the text */
@@ -233,13 +313,11 @@
 
 /* Main Content Area */
 .main-content {
-    background-color: #f8f9fa; /* Light gray background color */
-    border-radius: 10px; /* Adds rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow for depth */
-    padding: 20px; /* Padding inside the container */
+    padding: 20px; /* Keeps padding for content inside the container */
     margin-top: 20px; /* Space above the content */
     margin-bottom: 20px; /* Space below the content */
 }
+
 
 @keyframes fadeInOut {
     0% {
