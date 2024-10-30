@@ -338,6 +338,15 @@ body.loaded.new-year .widget-card {
     }
 }
 
+/* Add padding on all sides for the About Us section */
+.about-section {
+    padding: 20px; /* Adjust the value as needed */
+}
+
+/* Add padding on all sides for the Contact Us section */
+.contact-section {
+    padding: 20px; /* Adjust the value as needed */
+}
 
 /* Shadow and animation for the cards */
 .custom-card-shadow {
