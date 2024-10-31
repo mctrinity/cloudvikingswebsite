@@ -193,6 +193,12 @@ h1,h2 {
     margin-bottom: 15px;
 }
 
+.custom-member-name {
+    color: #ff6347 !important; /* Custom color for the member names */
+    font-size: 1.2rem; /* Optional: Adjust font size for member names */
+    font-weight: 600; /* Optional: Slightly bolder font */
+}
+
 /* Footer */
 footer {
     background-color: #343a40;
