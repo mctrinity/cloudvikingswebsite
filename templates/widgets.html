@@ -157,7 +157,7 @@
     }
 
     #news-widget a {
-        color: #ff5722; /* Link color */
+        /* color: #ff5722; */
         text-decoration: none;
     }
 
@@ -185,10 +185,6 @@
         height: auto; /* Maintains aspect ratio */
         border-radius: 5px;
     }
-
-    news-widget p {
-    color: #ffa500 !important; /* Set a color that applies to all paragraph text inside #news-widget */
-}
 
     /* Movie widget container adjustments */
     #single-movie {
@@ -224,7 +220,6 @@
 
     #ip-location-output p {
         font-size: 1em !important; /* Adjust size as desired */
-        color: #ffa500 !important; /* Change to your preferred color */
     }
 
     /* General card title styling */
@@ -335,7 +330,7 @@
                     newsContainer.innerHTML = `
                         <div class="news-item">
                             ${imageUrl ? `<div class="news-thumbnail-container"><img src="${imageUrl}" alt="News Thumbnail" class="news-thumbnail" /></div>` : ''}
-                            <p style="color: #ffa500;"><a href="${articleUrl}" target="_blank" style="color: #ffa500;">${articleTitle}</a></p>
+                            <p><a href="${articleUrl}" target="_blank">${articleTitle}</a></p>
                         </div>
                     `;
                     
@@ -463,10 +458,10 @@
         .then(data => {
             // Update the location widget with the fetched IP data
             document.getElementById('ip-location-output').innerHTML = `
-                <p style="font-size: 1em; color: #ffa500;"><strong>IP:</strong> ${data.ip || 'Not available'}</p>
-                <p style="font-size: 1em; color: #ffa500;"><strong>City:</strong> ${data.city || 'Not available'}</p>
-                <p style="font-size: 1em; color: #ffa500;"><strong>Region:</strong> ${data.region || 'Not available'}</p>
-                <p style="font-size: 1em; color: #ffa500;"><strong>Country:</strong> ${data.country || 'Not available'}</p>
+                <p style="font-size: 1em;"><strong>IP:</strong> ${data.ip || 'Not available'}</p>
+                <p style="font-size: 1em;"><strong>City:</strong> ${data.city || 'Not available'}</p>
+                <p style="font-size: 1em;"><strong>Region:</strong> ${data.region || 'Not available'}</p>
+                <p style="font-size: 1em;"><strong>Country:</strong> ${data.country || 'Not available'}</p>
             `;
 
         })

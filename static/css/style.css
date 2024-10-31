@@ -1,171 +1,138 @@
+/* Core Styles */
+
 body {
     backface-visibility: hidden;
 }
 
-/* In your main CSS file, early on */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #1b1b1b; /* Dark color to reduce flash in dark mode */
-    }
+/* Default styles for all h2 elements */
+h1,h2 {
+    color: #ff6347 !important; /* Force color to apply */
+    font-size: 2.5rem; /* Adjust font size if needed */
+    font-weight: bold; /* Optional: Make the text bold */
 }
 
-/* Add a temporary background while loading */
-body.loading {
-    background-color: #1b1b1b; /* Matches Halloween or your theme color */
+/* Clan Details */
+.clan-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
-
-/* Loading state: Elements start hidden or transparent */
-.loading .widget-card {
-    opacity: 0;
-    background-color: transparent;
+.clan-details h1 {
+    color: #FF9100;
+    font-size: 2rem;
+    margin-bottom: 20px;
 }
-
-/* Loaded state: Elements fade in with final background color */
-.loaded .widget-card {
-    opacity: 1;
-    background-color: #f8f9fa; /* or theme-specific color */
-    transition: opacity 0.5s ease, background-color 0.5s ease;
+.clan-details p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 8px;
 }
-
-/* Adjust theme-specific backgrounds */
-body.loaded.halloween .widget-card {
-    background-color: #2d2d2d;
+.clan-details strong {
+    /* color: #FFF4B5; */
+    font-weight: bold;
 }
-body.loaded.thanksgiving .widget-card {
-    background-color: #f3eac2;
+.clan-details .btn {
+    background-color: #ff6347; /* Custom button color */
+    border: none; /* Remove borders */
+    padding: 10px 20px;
+    font-size: 1.1rem;
 }
-body.loaded.christmas .widget-card {
-    background-color: #e0f7fa;
+.clan-details .btn:hover {
+    background-color: #e74c3c; /* Darker color on hover */
 }
-body.loaded.new-year .widget-card {
-    background-color: #f0e68c;
-}
-
-/* Initial state for hero text: transparent while loading */
-.loading .clan-details h1,
-.loading .clan-details p {
-    opacity: 0;
-    transition: opacity 0.5s ease;
-}
-
-/* Loaded state for hero text: fully visible */
-.loaded .clan-details h1,
-.loaded .clan-details p {
-    opacity: 1;
-    transition: opacity 0.5s ease;
-}
-
-/* Apply theme-specific colors in loaded state */
-.loaded.halloween .clan-details h1,
-.loaded.halloween .clan-details p {
-    color: #ffa500;
-}
-
-.loaded.thanksgiving .clan-details h1,
-.loaded.thanksgiving .clan-details p {
-    color: #6b3a00;
-}
-
-.loaded.christmas .clan-details h1,
-.loaded.christmas .clan-details p {
-    color: #d32f2f;
-}
-
-.loaded.new-year .clan-details h1,
-.loaded.new-year .clan-details p {
-    color: #ffd700;
-}
-
-
 
 /* Navbar */
 .navbar {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding: 1rem;
     width: 100%;
     background-color: #343a40;
     display: flex;
-    justify-content: space-between;  /* Keep brand on the left, nav items on the right */
+    justify-content: space-between;
     align-items: center;
 }
-
-
 .navbar .container-fluid {
-    padding-left: 0;
-    padding-right: 0;
+    padding: 0;
 }
 
-/* Navbrand logo and clan name stylings */
-
-.logo-gif {
-    height: 50px;
-    max-height: 50px;
-    width: auto;
-    border-radius: 10px;
-    flex-shrink: 0;  /* Prevent the logo from shrinking */
-}
-
-
-.clan-name-container {
-    flex-grow: 1;  /* Allow the clan name container to grow */
-    flex-shrink: 1;  /* Allow the clan name container to shrink if necessary */
-}
-
-.clan-name {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: white;
-    white-space: nowrap;  /* Prevent wrapping */
-    overflow: hidden;
-}
-
-
-.custom-navbar-brand {
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    margin-left: 2rem;
-    margin-right: auto;  /* Push the navigation items to the right */
-}
-
-
-/* Responsive design for smaller screens (phone) */
-@media (max-width: 576px) {
-    .clan-name {
-        font-size: 0.9rem;  /* Reduce font size for smaller screens */
-    }
-
-    .logo-gif {
-        height: 40px;  /* Reduce logo size for mobile */
-    }
-
-    .custom-navbar-brand {
-        margin-left: 0.5rem;  /* Smaller left margin */
-    }
-}
-
-
-/* Center navbar items in mobile view */
+/* Center navbar items */
 .navbar-collapse {
-    justify-content: center;
+    justify-content: center; /* Center the items */
+}
+
+/* Navbar items styling */
+.navbar-nav {
+    flex-direction: row; /* Keep items in a row */
+    justify-content: center; /* Center items */
+    text-align: center; /* Ensure text is centered */
 }
 
 .navbar-toggler {
     margin-left: auto;
 }
 
-/* Custom navbar item spacing */
-.navbar-nav .nav-item {
-    padding-left: 1rem;
-    padding-right: 1rem;
+.logo-gif {
+    height: 50px;
+    width: auto;
+    border-radius: 10px;
+}
+.clan-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    white-space: nowrap;
+}
+.custom-navbar-brand {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    margin-left: 2rem;
+    margin-right: auto;
 }
 
+/* Responsive Design */
+@media (max-width: 576px) {
+    .clan-name {
+        font-size: 0.9rem; /* Reduce font size for smaller screens */
+    }
+    .logo-gif {
+        height: 40px; /* Reduce logo size for mobile */
+    }
+    .custom-navbar-brand {
+        margin-left: 0.5rem; /* Smaller left margin */
+    }
+    
+    /* Center navbar items in mobile view */
+    .navbar-nav {
+        flex-direction: column; /* Stack items vertically */
+    }
+
+    .navbar-nav .nav-item {
+        padding: 0.5rem 0; /* Optional: Add some vertical spacing between items */
+    }
+}
+
+/* Tablet devices */
+@media (min-width: 576px) and (max-width: 768px) {
+    .navbar-nav {
+        flex-direction: row; /* Keep items in a row for tablets */
+        justify-content: center; /* Center items */
+        text-align: center; /* Ensure text is centered */
+    }
+}
+
+.navbar-nav .nav-item {
+    padding: 0 1rem; /* Horizontal padding for navbar items */
+}
 .navbar-nav .nav-link {
     color: #ffffff;
 }
-
 .navbar-nav .nav-link:hover {
     color: #f1c40f; /* Hover color */
 }
@@ -176,10 +143,8 @@ body.loaded.new-year .widget-card {
     overflow: hidden;
     height: 500px;
     width: 100%;
-    z-index: 1;
-    background-color: transparent; /* Debugging: temporary background to see the container */
+    background-color: transparent;
 }
-
 .hero-img {
     position: absolute;
     top: 0;
@@ -191,345 +156,110 @@ body.loaded.new-year .widget-card {
     visibility: hidden;
     transition: opacity 1s ease-in-out, visibility 0s linear 1s;
 }
-
 .hero-img.active {
     opacity: 1;
     visibility: visible;
 }
 
-/* Clan Details */
-.clan-details {
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Vertically centers the text */
-    align-items: center; /* Center horizontally */
-    padding: 20px; /* Adds padding inside the clan details */
-    font-family: 'Roboto', sans-serif; /* New font family */
-    color: #333; /* Adjusted text color */
-    /* background-color: #f8f9fa; */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    text-align: center; /* Center-align the text */
-}
-
-/* Welcome message styling */
-.clan-details h1:first-of-type {
-    font-family: 'Poppins', sans-serif; /* Custom font for greeting */
-    color: #ff6347; /* Custom color for the greeting */
-    font-size: 2.5rem; /* Increase font size */
-    font-weight: bold;
-    text-transform: uppercase; /* Uppercase text */
-    margin-bottom: 10px;
-}
-
-/* Clan name styling */
-.clan-details h1 {
-    color: #FF9100 !important; /* Custom color for clan name */
-    font-size: 2rem; /* Adjusted font size */
-    margin-bottom: 20px;
-}
-
-/* Styling for paragraph text */
-.clan-details p {
-    color: #555; /* Text color for details */
-    font-size: 1.1rem; /* Adjusted font size */
-    margin-bottom: 8px;
-}
-
-/* Strong text styling in clan details */
-.clan-details strong {
-    color: #FFF4B5; /* Highlighted color for strong text */
-    font-weight: bold;
-}
-
-/* Styling for the 'View Clan Members' button */
-.clan-details .btn {
-    background-color: #ff6347; /* Custom button color */
-    border: none; /* Remove borders */
-    padding: 10px 20px;
-    font-size: 1.1rem;
-}
-
-.clan-details .btn:hover {
-    background-color: #e74c3c; /* Darker color on hover */
-}
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-    .d-flex {
-        flex-direction: column; /* Stack hero slider and clan details vertically */
-        align-items: flex-start;
-    }
-
-    .hero-slider,
-    .clan-details {
-        width: 100%; /* Full width on smaller screens */
-    }
-
-    .hero-slider {
-        height: 60vh; /* Adjust height for hero slider on smaller screens */
-    }
-
-    .clan-details {
-        margin-top: 20px; /* Add some space above the text section */
-    }
-
-    .clan-details h1 {
-        font-size: 2.5rem; /* Increase heading size */
-    }
-
-    .clan-details p {
-        font-size: 1.2rem; /* Increase paragraph size */
-    }
-
-    .btn {
-        font-size: 1rem; /* Adjust button text size */
-        padding: 10px 20px; /* Increase button padding */
-    }
-
-    /* Navbar adjustments for mobile */
-    .navbar {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
-    }
-
-    .navbar-toggler {
-        margin-left: auto; /* Ensure the toggler button is aligned left */
-    }
-
-    .navbar-collapse {
-        justify-content: center; /* Center the nav items in the collapsible menu */
-        text-align: center; /* Align text of the links in the center */
-    }
-}
-
-/* Ensure the nav-items are justified to the right on larger screens */
-@media (min-width: 768px) {
-    .navbar-collapse {
-        justify-content: end; /* Align nav items to the right on larger screens */
-        text-align: center; /* Align text of the links in the center */
-    }
-}
-
-/* Main Content Area */
-.main-content {
-    padding: 20px; /* Keeps padding for content inside the container */
-    margin-top: 20px; /* Space above the content */
-    margin-bottom: 20px; /* Space below the content */
-}
-
-
-@keyframes fadeInOut {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    10% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    90% {
-        opacity: 1;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scale(1.2);
-    }
-}
-
-/* Add padding on all sides for the About Us section */
-.about-section {
-    padding: 20px; /* Adjust the value as needed */
-}
-
-/* Add padding on all sides for the Contact Us section */
+/* About and Contact Sections */
+.about-section,
 .contact-section {
-    padding: 20px; /* Adjust the value as needed */
+    padding: 20px;
 }
 
-/* Shadow and animation for the cards */
+/* Card Styles */
 .custom-card-shadow {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     opacity: 1;
     transform: translateY(0);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     margin-bottom: 40px;
-    width: 100%; /* Increase width to full for desktop */
-    max-width: 400px; /* Set a maximum width to prevent it from becoming too large */
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
-
-.custom-card-spacing {
-    padding-left: 25px;
-    padding-right: 25px;
-}
-
-/* Grow effect on hover */
 .custom-card-shadow:hover {
     transform: scale(1.15);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
-
 .member-details {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center both the avatar and the text */
+    align-items: center;
 }
-
-
-/* Change the color for the h2 in the clan members section */
-h2 {
-    color: #ff6347 !important; /* Custom color for the heading */
-    font-size: 2.5rem; /* Optional: Adjust the font size */
-    font-weight: bold; /* Optional: Make the text bold */
-}
-
-/* Change the color for clan member names */
-.custom-member-name {
-    color: #ff6347 !important; /* Custom color for the member names */
-    font-size: 1.2rem; /* Optional: Adjust font size for member names */
-    font-weight: 600; /* Optional: Slightly bolder font */
-}
-
 .member-details img {
-    width: 70px; /* Adjust size of the avatar as needed */
+    width: 70px;
     height: 70px;
-    margin-bottom: 15px; /* Adds space between avatar and text */
+    margin-bottom: 15px;
 }
 
-.card-text {
-    text-align: center; /* Ensure text is centered */
-}
-
-
-/* Keyframe animation for card appearance */
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Footer Styles */
+/* Footer */
 footer {
     background-color: #343a40;
     padding: 20px 0;
-    margin: 0; /* Ensure no extra margin */
-    width: 100%; /* Make sure it spans the full width */
+    width: 100%;
 }
-
 footer .container-fluid {
-    padding-left: 0; /* Remove padding on the left */
-    padding-right: 0; /* Remove padding on the right */
-    margin-left: 0; /* Remove any margin on the left */
-    margin-right: 0; /* Remove any margin on the right */
-    width: 100%; /* Ensure the container takes the full width */
+    padding: 0;
+    margin: 0;
+    width: 100%;
 }
-
-@media (max-width: 768px) {
-    footer {
-        padding-left: 0; /* Remove padding on the left for small screens */
-        padding-right: 0; /* Remove padding on the right for small screens */
-    }
-
-    footer .container-fluid {
-        padding-left: 0; /* Ensure there's no padding on small screens */
-        padding-right: 0;
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
 footer a {
     font-size: 1.5rem;
     transition: color 0.3s;
 }
-
 footer a:hover {
     color: #f1c40f;
 }
-
-/* Grouping the Icons */
 .social-icons-group {
     display: inline-flex;
     gap: 10px;
     padding-top: 5px;
 }
-
 .social-icons-group i {
     font-size: 20px;
     vertical-align: middle;
-    transition: transform 0.3s ease, color 0.3s ease;
+    transition: transform 0.3s ease, color 0.3s;
 }
-
-.social-icons-group a {
-    display: inline-block;
-    line-height: 1;
-}
-
 .social-icons-group a:hover i {
     transform: scale(1.1);
     color: #f1c40f;
 }
-
 .disclaimer-text {
     font-size: 0.875rem;
-    line-height: 1.5;  /* Ensures consistent line spacing */
-    margin-bottom: 0.3rem; /* Adjust as needed to control the gap between lines */
+    line-height: 1.5;
+    margin-bottom: 0.3rem;
 }
-
 .disclaimer-text a {
     font-size: inherit;
     color: #f1c40f;
 }
 
-
-/* Ensure the footer reaches the edges of the screen */
-@media (max-width: 768px) {
-    .container-fluid {
-        padding-left: 0;
-        padding-right: 0;
-    }
-}
-
-
 /* Floating Cloud Animation */
 .floating-clouds {
-    animation: floatClouds 10s ease-in-out infinite; /* Adjust duration and easing */
-    position: relative; /* Ensure the element can move */
+    animation: floatClouds 10s ease-in-out infinite;
+    position: relative;
 }
-
 @keyframes floatClouds {
-    0% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px); /* Moves up slightly */
-    }
-    100% {
-        transform: translateY(0); /* Returns to original position */
-    }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
 }
 
-/* Styling for flash messages near the button */
+/* Flash Messages */
 .flash-messages {
     margin-top: 10px;
 }
-
 .flash-messages .alert {
     padding: 10px;
     border-radius: 4px;
     font-size: 0.9em;
 }
-
 .flash-messages .alert-success {
     color: #155724;
     background-color: #d4edda;
     border-color: #c3e6cb;
 }
-
 .flash-messages .alert-danger {
     color: #721c24;
     background-color: #f8d7da;
