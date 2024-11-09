@@ -6,6 +6,7 @@ body {
 
 /* Default styles for all h2 elements */
 h1,h2 {
+    font-family: 'Poppins', sans-serif; 
     color: #ff6347 !important; /* Force color to apply */
     font-size: 2.5rem; /* Adjust font size if needed */
     font-weight: bold; /* Optional: Make the text bold */
