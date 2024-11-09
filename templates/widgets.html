@@ -60,6 +60,21 @@
             </div>
         </div>
 
+        <!-- Holiday Countdown Widget -->
+        <div class="col-md-4 custom-card-spacing">
+            <div class="card custom-card-shadow widget-card">
+                <h5 class="card-title">Holiday Countdown</h5>
+                <div class="card-body text-center">
+                    <div id="holiday-countdown-wrapper"> <!-- Wrapper for the GIF -->
+                        <!-- GIF background only -->
+                    </div>
+                    <div id="holiday-countdown">
+                        <p><strong><span id="days-left">0</span></strong> days left until the holiday!</p>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -226,6 +241,35 @@
     .card-title {
         font-size: 1.1em;
         color: #ff5722;
+    }
+
+    /* Holiday Countdown Wrapper */
+    #holiday-countdown-wrapper {
+        background-image: url('/static/images/christmasdance.gif'); /* Festive GIF background */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 3px solid #ff0000; /* Red border for a holiday feel */
+        border-radius: 15px;
+        height: 400px;
+        width: 100%;
+        max-width: 360px;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5); /* Glow effect */
+    }
+
+    /* Countdown Text */
+    #holiday-countdown {
+        font-size: 1.5em;
+        color: #fff;
+        background: linear-gradient(45deg, #008000, #ff0000); /* Green to red gradient */
+        padding: 10px 20px;
+        border-radius: 8px;
+        text-align: center;
+        font-family: 'Mountains of Christmas', cursive; /* Festive font */
     }
 
 </style>
@@ -433,6 +477,31 @@
     });
 </script>
 
+<!-- Holiday Countdown -->
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    // Set the target date for the holiday (e.g., Christmas)
+    const targetDate = new Date('December 25, 2024'); // Update this to your holiday date
+
+    function updateCountdown() {
+        const currentDate = new Date();
+        const timeDiff = targetDate - currentDate;
+
+        if (timeDiff > 0) {
+            const daysRemaining = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
+            document.getElementById('days-left').textContent = daysRemaining;
+        } else {
+            document.getElementById('days-left').textContent = "0"; // Or display a message
+        }
+    }
+
+    // Initial countdown calculation
+    updateCountdown();
+
+    // Optionally, update the countdown every day if the page remains open
+    setInterval(updateCountdown, 86400000); // Update every 24 hours
+});
+</script>
 
 <!-- AJAX script for IPInfo lookup -->
 <script>    

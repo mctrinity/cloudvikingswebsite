@@ -18,12 +18,53 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
         <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap">
+
 
     <!-- Holiday Themes -->
     <!-- <link rel="stylesheet" href="{{ url_for('static', filename='css/holidayThemes.css') }}"> -->
 
 </head>
 <body class="d-flex flex-column min-vh-100 loading">
+
+    <!-- Snowflakes for the snowfall effect -->
+    <div class="snowflake">❄️</div>
+    <div class="snowflake">❄️</div>
+    <div class="snowflake">❄️</div>
+    <div class="snowflake">❄️</div>
+    <div class="snowflake">❄️</div>
+    <!-- Add more snowflake divs as needed for a denser effect -->
+
+    <!-- Inline CSS for Snowflake Animation -->
+    <style>
+        /* Snowfall Effect */
+        @keyframes snowfall {
+            0% { transform: translateY(-100%); opacity: 0.8; }
+            100% { transform: translateY(100vh); opacity: 0.1; }
+        }
+
+        /* General styling for snowflakes */
+        .snowflake {
+            position: absolute;
+            top: 0;
+            font-size: 1.5em;
+            color: #fff;
+            animation: snowfall linear infinite;
+            opacity: 0.8;
+        }
+
+        /* Individual animation duration and delay for snowflakes */
+        .snowflake:nth-child(1) { animation-duration: 15s; animation-delay: 0s; }
+        .snowflake:nth-child(2) { animation-duration: 18s; animation-delay: 3s; }
+        .snowflake:nth-child(3) { animation-duration: 22s; animation-delay: 6s; }
+        .snowflake:nth-child(4) { animation-duration: 16s; animation-delay: 2s; }
+        .snowflake:nth-child(5) { animation-duration: 20s; animation-delay: 5s; }
+        .snowflake:nth-child(6) { animation-duration: 24s; animation-delay: 8s; }
+        .snowflake:nth-child(7) { animation-duration: 19s; animation-delay: 1s; }
+        .snowflake:nth-child(8) { animation-duration: 23s; animation-delay: 4s; }
+        .snowflake:nth-child(9) { animation-duration: 21s; animation-delay: 7s; }
+        .snowflake:nth-child(10) { animation-duration: 25s; animation-delay: 9s; }
+    </style>
 
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -145,7 +186,20 @@
             document.body.classList.add("loaded"); // Add the 'loaded' class
         });
     </script>
-    
+
+    <!-- Snowflakes script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Select all snowflakes
+            const snowflakes = document.querySelectorAll('.snowflake');
+
+            // Assign random left position to each snowflake
+            snowflakes.forEach(snowflake => {
+                const randomLeft = Math.floor(Math.random() * 100); // Generate random number between 0 and 100
+                snowflake.style.left = `${randomLeft}vw`; // Set random left position
+            });
+        });
+    </script>
     
 </body>
 </html>

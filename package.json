@@ -6,10 +6,9 @@
     "postcss-cli": "^11.0.0"
   },
   "scripts": {
-  "build-css": "postcss static/css/custom-bootstrap.css --use autoprefixer -o static/css/custom-bootstrap.css",
-  "watch-css": "nodemon --watch static/scss --exec \"python compile_scss.py && npm run build-css\""
-}
-,
+    "build-css": "postcss static/css/custom-bootstrap.css --use autoprefixer -o static/css/custom-bootstrap.css",
+    "watch-css": "nodemon --watch static/scss --exec \"python compile_scss.py && npm run build-css\""
+  },
   "devDependencies": {
     "nodemon": "^3.1.7"
   }
