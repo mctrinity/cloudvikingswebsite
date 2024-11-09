@@ -69,7 +69,7 @@
                         <!-- GIF background only -->
                     </div>
                     <div id="holiday-countdown">
-                        <p><strong><span id="days-left">0</span></strong> days left until the holiday!</p>
+                        <p><strong><span id="days-left">0</span></strong> days left until Christmas!</p>
                     </div>                    
                 </div>
             </div>
@@ -244,9 +244,9 @@
     }
 
     /* Holiday Countdown Wrapper */
-    #holiday-countdown-wrapper {
+        #holiday-countdown-wrapper {
         background-image: url('/static/images/christmasdance.gif'); /* Festive GIF background */
-        background-size: cover;
+        background-size: contain; /* Adjusts the image to fit within the container */
         background-position: center;
         background-repeat: no-repeat;
         border: 3px solid #ff0000; /* Red border for a holiday feel */
@@ -256,17 +256,19 @@
         max-width: 360px;
         margin-bottom: 10px;
         display: flex;
-        align-items: center;
-        justify-content: center;
+        align-items: center; /* Center vertically */
+        justify-content: center; /* Center horizontally */
         box-shadow: 0px 0px 15px rgba(255, 0, 0, 0.5); /* Glow effect */
     }
 
     /* Countdown Text */
     #holiday-countdown {
         font-size: 1.5em;
+        align-items: center; /* Centers content vertically */
+        justify-content: center; /* Centers content horizontally */
         color: #fff;
         background: linear-gradient(45deg, #008000, #ff0000); /* Green to red gradient */
-        padding: 10px 20px;
+        padding: 20px 10px 10px; /* 20px on top, 10px left/right, 10px bottom */
         border-radius: 8px;
         text-align: center;
         font-family: 'Mountains of Christmas', cursive; /* Festive font */
