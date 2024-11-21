@@ -190,5 +190,31 @@ def clear_cache():
     cache.clear()
     return "Cache cleared!"
 
+# Route to get the ISS location
+@app.route('/iss-location')
+def iss_location():
+    try:
+        # Fetch ISS location from the Open Notify API
+        response = requests.get("http://api.open-notify.org/iss-now.json")
+        response.raise_for_status()  # Raise an exception for HTTP errors
+        data = response.json()
+
+        # Extract latitude and longitude from the API response
+        iss_position = data.get("iss_position", {})
+        return jsonify({
+            "latitude": iss_position.get("latitude", "Unavailable"),
+            "longitude": iss_position.get("longitude", "Unavailable"),
+            "timestamp": data.get("timestamp", "Unavailable")
+        })
+    except requests.exceptions.RequestException as e:
+        app.logger.error(f"ISS Location Error: {e}")
+        return jsonify({
+            "latitude": "Unavailable",
+            "longitude": "Unavailable",
+            "timestamp": "Unavailable",
+            "error": str(e)
+        })
+
+
 if __name__ == '__main__':
     app.run(debug=True)

@@ -18,6 +18,8 @@ instance/
 
 # Others
 *-backup*
+*-iss*
+
 
 # VS Code settings
 .vscode/
