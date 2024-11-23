@@ -190,30 +190,69 @@ def clear_cache():
     cache.clear()
     return "Cache cleared!"
 
-# Route to get the ISS location
+# Route to get the ISS location with caching
+# Default cache timeout
+CACHE_TIMEOUT = 30  # 30 seconds
+
 @app.route('/iss-location')
+@cache.cached(timeout=CACHE_TIMEOUT, key_prefix='iss_location')
 def iss_location():
+    global CACHE_TIMEOUT  # Allow dynamic adjustment of cache timeout
+    iss_api_url = "http://api.open-notify.org/iss-now.json"
+
     try:
         # Fetch ISS location from the Open Notify API
-        response = requests.get("http://api.open-notify.org/iss-now.json")
+        response = requests.get(iss_api_url)
         response.raise_for_status()  # Raise an exception for HTTP errors
-        data = response.json()
 
-        # Extract latitude and longitude from the API response
+        data = response.json()
         iss_position = data.get("iss_position", {})
+        latitude = iss_position.get("latitude", "Unavailable")
+        longitude = iss_position.get("longitude", "Unavailable")
+        timestamp = data.get("timestamp", "Unavailable")
+
+        # Log the successful fetch
+        app.logger.info(f"Fetched ISS Location: lat={latitude}, long={longitude}, time={timestamp}")
+
+        # Reset cache timeout if successful
+        CACHE_TIMEOUT = 30  # Reset to a short timeout for frequent updates
+
         return jsonify({
-            "latitude": iss_position.get("latitude", "Unavailable"),
-            "longitude": iss_position.get("longitude", "Unavailable"),
-            "timestamp": data.get("timestamp", "Unavailable")
+            "latitude": latitude,
+            "longitude": longitude,
+            "timestamp": timestamp
         })
-    except requests.exceptions.RequestException as e:
-        app.logger.error(f"ISS Location Error: {e}")
+
+    except requests.exceptions.HTTPError as e:
+        if response.status_code == 429:  # Rate limit error
+            app.logger.warning("Rate limit exceeded. Increasing cache timeout.")
+            CACHE_TIMEOUT = min(CACHE_TIMEOUT * 2, 3600)  # Double the timeout up to 1 hour
+            return jsonify({
+                "latitude": "Unavailable",
+                "longitude": "Unavailable",
+                "timestamp": "Unavailable",
+                "error": "Rate limit exceeded. Please try again later."
+            }), 429
+
+        # Handle other HTTP errors
+        app.logger.error(f"HTTP Error: {e}")
         return jsonify({
             "latitude": "Unavailable",
             "longitude": "Unavailable",
             "timestamp": "Unavailable",
-            "error": str(e)
-        })
+            "error": f"HTTP Error: {e}"
+        }), response.status_code
+
+    except requests.exceptions.RequestException as e:
+        # Handle generic request errors
+        app.logger.error(f"Request Exception: {e}")
+        return jsonify({
+            "latitude": "Unavailable",
+            "longitude": "Unavailable",
+            "timestamp": "Unavailable",
+            "error": f"Request Error: {e}"
+        }), 500
+
 
 
 if __name__ == '__main__':

@@ -1,0 +1,44 @@
+/* ISS Info Grid Container */
+.iss-info-grid {
+    display: grid; /* Enable grid layout */
+    grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+    gap: 15px; /* Space between grid items */
+    justify-items: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+
+/* Individual Quadrants (Grid Items) */
+.iss-info-item {
+    display: flex; /* Flexbox for label and value alignment */
+    flex-direction: column; /* Stack label and value vertically */
+    justify-content: center; /* Center-align label and value */
+    align-items: flex-start; /* Align text to the left */
+    padding: 10px; /* Add padding for better spacing */
+    border: 1px solid #ddd; /* Optional: Add borders for separation */
+    border-radius: 6px; /* Optional: Rounded corners for aesthetics */
+    background-color: #f8f9fa; /* Optional: Light background for better readability */
+    text-align: left; /* Align text to the left */
+}
+
+/* Text Colors for Labels and Values */
+.iss-info-item strong {
+    color: #007bff; /* Blue color for labels */
+}
+
+.iss-info-item span {
+    color: #28a745; /* Green color for values */
+    font-weight: bold; /* Optional: Make values bold */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .iss-info-grid {
+        grid-template-columns: 1fr; /* Switch to single-column layout */
+        gap: 10px; /* Adjust spacing for smaller screens */
+    }
+
+    .iss-info-item {
+        text-align: center; /* Center-align content for small screens */
+        align-items: center; /* Align label and value in the center */
+    }
+}

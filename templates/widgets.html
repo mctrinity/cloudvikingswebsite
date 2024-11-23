@@ -1,5 +1,11 @@
 {% extends "base.html" %}
 
+{% block stylesheets %}
+<!-- Individual Stylesheets for Widgets -->
+<link rel="stylesheet" href="{{ url_for('static', filename='css/iss-tracker.css') }}">
+
+{% endblock %}
+
 {% block content %}
 <div class="container mt-4">
     <h2 class="mb-4 text-center">Info Hub</h2>
@@ -71,13 +77,39 @@
             <div class="card custom-card-shadow widget-card uniform-card-height">
                 <h5 class="card-title">ISS Tracker</h5>
                 <div class="card-body text-center">
+                    <!-- Map Section -->
                     <div id="iss-map" style="height: 250px; width: 100%;"></div>
+
+                    <!-- ISS Info Section -->
+                    <!-- ISS Info Section -->
                     <div id="iss-widget-content" class="widget-content mt-3">
-                        <p>Loading ISS location...</p>
+                        <div class="iss-info-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="iss-info-item">
+                                <strong style="color: #ff5722;">Latitude:</strong>
+                                <span id="iss-latitude" style="color: #28a745;">Loading...</span>
+                            </div>
+                            <div class="iss-info-item">
+                                <strong style="color: #ff5722;">Longitude:</strong>
+                                <span id="iss-longitude" style="color: #28a745;">Loading...</span>
+                            </div>
+                            <div class="iss-info-item">
+                                <strong style="color: #ff5722;">Region:</strong>
+                                <span id="iss-region" style="color: #28a745;">Loading...</span>
+                            </div>
+                            <div class="iss-info-item">
+                                <strong style="color: #ff5722;">Country:</strong>
+                                <span id="iss-country" style="color: #28a745;">Loading...</span>
+                            </div>
+                        </div>
                     </div>
+
+                    
                 </div>
             </div>
         </div>
+
+
+
     </div>
 </div>
 
@@ -123,16 +155,6 @@
         justify-content: center;
         align-items: center;
     }
-
-    /* Weather Widget */
-    /* #weather-info {
-        padding: 15px;
-        border-radius: 8px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    } */
 
     /* Weather Info Content Centering */
     #weather-info {
@@ -238,23 +260,6 @@
         max-width: 90%; /* Prevent text from overflowing */
         margin: 0 auto; /* Center the text block */
         word-wrap: break-word; /* Ensure text wraps properly */
-    }
-
-    /* ISS Widget */
-    #iss-map {
-        height: 250px;
-        margin-bottom: 10px;
-    }
-
-    @media (max-width: 768px) {
-        #iss-map {
-            height: 200px;
-        }
-    }
-
-    #iss-widget-content {
-        font-size: 1rem;
-        color: #1e88e5;
     }
 
     /* Responsive Adjustments */
@@ -542,54 +547,7 @@
     });
 </script>
 
-<!-- ISS Script -->
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const issApiUrl = "/iss-location";
-        const map = L.map('iss-map').setView([0, 0], 2);
-
-        const issIcon = L.icon({
-            iconUrl: '/static/images/iss-icon.png',
-            iconSize: [50, 32],
-            iconAnchor: [25, 16]
-        });
-
-        const marker = L.marker([0, 0], { icon: issIcon }).addTo(map);
-
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '© OpenStreetMap contributors'
-        }).addTo(map);
-
-        function updateISSLocation() {
-            fetch(issApiUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        console.error(`ISS API Error: ${response.statusText}`);
-                        return { latitude: 'Unavailable', longitude: 'Unavailable' };
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    const { latitude, longitude } = data;
-                    const latLng = [parseFloat(latitude), parseFloat(longitude)];
-                    marker.setLatLng(latLng);
-                    map.setView(latLng, map.getZoom());
-                    document.getElementById('iss-widget-content').innerHTML = `
-                        <p>Latitude: ${latitude}</p>
-                        <p>Longitude: ${longitude}</p>
-                    `;
-                })
-                .catch(error => {
-                    console.error(`Error fetching ISS data: ${error}`);
-                    document.getElementById('iss-widget-content').innerHTML = `<p>Error fetching ISS location.</p>`;
-                });
-        }
-
-        updateISSLocation();
-        setInterval(updateISSLocation, 5000);
-    });
-</script>
-
 <script src="{{ url_for('static', filename='js/holidayTheme.js') }}"></script>
+<script src="{{ url_for('static', filename='js/iss-tracker.js') }}"></script>
 
 {% endblock %}

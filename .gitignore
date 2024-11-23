@@ -131,5 +131,4 @@ package-lock.json
 # npm-debug.log
 npm-debug.log*
 
-# Compiled SCSS
-static/css/*.css
+
