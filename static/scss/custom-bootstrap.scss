@@ -1,19 +1,13 @@
 // static/scss/custom-bootstrap.scss
-
-// Define custom color variables
-$custom-primary: #ff5733; // Custom primary color
-
-// Import Bootstrap with overridden variables
-@use "../../node_modules/bootstrap/scss/bootstrap" with (
-  $primary: $custom-primary
-);
+$primary: #ff5733;  // Override Bootstrap's primary color
 
 // Define variables for custom button styles
 $btn-hover-bg: #ffffff; /* White for hover background */
 $btn-active-bg: #ffffff; /* White for active background */
 $btn-active-border-color: #ffffff; /* White for active border color */
 
-// Custom button styles
+@import "node_modules/bootstrap/scss/bootstrap"; // Import Bootstrap SCSS
+
 .btn-primary {
   color: white !important;
 }
@@ -21,14 +15,14 @@ $btn-active-border-color: #ffffff; /* White for active border color */
 .btn-light {
   color: #ff6347 !important;
   background-color: whitesmoke !important;
-
+  
   // Update hover and active styles to white
   --bs-btn-hover-bg: $btn-hover-bg;
   --bs-btn-active-bg: $btn-active-bg;
   --bs-btn-active-border-color: $btn-active-border-color;
 }
 
-// Fix appearance properties for form elements
+// Custom appearance property fixes with higher specificity and !important to force the override
 [type="submit"] {
   -webkit-appearance: button !important; /* For WebKit-based browsers */
   appearance: button !important;         /* Standard for modern browsers */
@@ -44,5 +38,3 @@ $btn-active-border-color: #ffffff; /* White for active border color */
   -webkit-appearance: button !important; /* For WebKit-based browsers */
   appearance: button !important;         /* Standard for modern browsers */
 }
-
-

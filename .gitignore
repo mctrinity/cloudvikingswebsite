@@ -131,4 +131,9 @@ package-lock.json
 # npm-debug.log
 npm-debug.log*
 
+# old
+old*.*
+
+# css
+custom-bootstrap.css
 
